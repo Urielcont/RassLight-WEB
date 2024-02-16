@@ -1,0 +1,71 @@
+/* Estilos general para la pagina index */
+*{
+    list-style: none;
+    text-decoration: none;
+    text-decoration-line: none;
+}
+
+/* Estilos para el body */
+.body{
+    margin: 0;
+    padding: 0;
+
+}
+/* Estilos para todas las etiquetas a */
+a{
+    text-decoration: none;
+}
+/* Texto grnade "Bienvenido" */
+.text-image{
+    position: absolute; 
+    top: 40%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    text-align: center; 
+    color: white; 
+    font-size: 10vmax; 
+    font-family: "Inter", sans-serif;
+    font-weight: bold;
+}
+/* Texto pequeño descripcion */
+.content-info{
+    position: absolute; 
+    top: 60%; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    text-align: 
+    center; color: white;
+    font-size: 1.2vmax;
+}
+/* boton de la pagina */
+.button-image{
+    position: absolute;
+    width: 15%;
+    text-align: center;
+    top: 75%; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    background-color: #16c1c8; 
+    color: white; 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 8px; 
+    font-size: 1vmax; 
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* #SobreNosotros-info{
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    align-self: center;
+}
+
+.img-servicios{
+    left: 50%;
+    grid-row: 1;
+    width: 400px;
+    padding-left: 50px;
+} */
