@@ -17,6 +17,7 @@ a{
 }
 /* Texto grnade "Bienvenido" */
 .text-image{
+    user-select: none;
     position: absolute; 
     top: 40%; 
     left: 50%; 
@@ -55,17 +56,49 @@ a{
     text-decoration: none;
 }
 
-/* #SobreNosotros-info{
+header {
+    padding: 10px; 
+    text-align: center; 
+    background-image: url('../images/fondo-header.png');
+    background-size: cover;
+}
+.img-header{
+    max-width:10%;
+}
+ul {
+    list-style-type: none; 
+    margin: 0;
+    padding: 0;
     margin-top: 50px;
-    display: flex;
-    align-items: center;
-    align-content: center;
-    align-self: center;
 }
 
-.img-servicios{
-    left: 50%;
-    grid-row: 1;
-    width: 400px;
-    padding-left: 50px;
-} */
+li {
+    display: inline; 
+    margin-right: 20px; 
+    
+}
+.a-header{
+    
+    color: #000;
+    text-decoration: none;
+    /* color: white; */
+    font-weight: bold;  
+}
+
+.a-header:hover{
+    color: #16c1c8;
+}
+.div-servicios{
+    margin-top: 30px;
+    position: relative;
+    text-align: center;
+}
+.div-servicios img{
+   height: 250px;
+}
+.img-servicios {
+    width: 30%;
+    display: inline-block;
+    margin-left: 2%; /* Adjust the margin as needed */
+  }
+
