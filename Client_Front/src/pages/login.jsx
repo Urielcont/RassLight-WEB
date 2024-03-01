@@ -28,8 +28,7 @@ function Loginpage() {
                     )
                 }
                 </div>
-
-
+                
                 <div className='flex items-center justify-center'>
                     <button type='submit' className= ''>Registrarse</button>
                 </div>
