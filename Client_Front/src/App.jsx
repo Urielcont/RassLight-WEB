@@ -1,6 +1,5 @@
 // import { useState } from 'react'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
-import './App.css'
 import Loginpage from './pages/login'
 import Principal from './pages/principal'
 function App() {
