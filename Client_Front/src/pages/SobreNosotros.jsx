@@ -1,4 +1,6 @@
 // Pagina SObre Nosotros
+import { Link } from 'react-router-dom';
+
 import '../css/nosotros.css';
 import '../css/style-index.css';
 
@@ -12,13 +14,14 @@ return(
 
     <div>
         {/* // Codigo Html */}
-        <header >
+      <header >
                 <a href="#" className='a-header-img'><img className="img-header text-center" src={Logo} /></a>
                 <ul>
-                    <li><a className="a-header" href="#">INICIO</a></li>
-                    <li><a className="a-header" href="prototipo.html">PROTOTIPO</a></li>
-                    <li><a className="a-header" href="nosotros.html">SOBRE NOSOTROS</a></li>
-                    <li><a className="a-header" href="#">CONTACTANOS</a></li>
+                    <li><Link className='a-header' to="/">Inicio</Link></li>
+                    <li><Link className='a-header' to="/Prototipo">Prototipo</Link></li>
+                    <li><Link className='a-header' to="/SobreNosotros">Sobre Nosotros</Link></li>
+                    <li><Link className='a-header' to="/Contactanos">Contactanos</Link></li>
+
                 </ul>
             </header>
 

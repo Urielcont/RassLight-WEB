@@ -1,5 +1,6 @@
 // Pagina Principal Landing
-// Declaracion de la funcion Index
+import {Link } from "react-router-dom";
+
 // Importar los estilos
 import '../css/style-index.css'
 // Importar las imagenes a autilizar
@@ -16,15 +17,15 @@ function Index() {
     <div>
       {/* // Codigo Html */}
       <header >
-        <a href="#" className='a-header-img'><img className="img-header text-center" src={Logo} /></a>
-        <ul>
-          <li><a className="a-header" href="#">INICIO</a></li>
-          <li><a className="a-header" href="prototipo.html">PROTOTIPO</a></li>
-          <li><a className="a-header" href="nosotros.html">SOBRE NOSOTROS</a></li>
-          <li><a className="a-header" href="#">CONTACTANOS</a></li>
+                <a href="#" className='a-header-img'><img className="img-header text-center" src={Logo} /></a>
+                <ul>
+                    <li><Link className='a-header' to="/">Inicio</Link></li>
+                    <li><Link className='a-header' to="/Prototipo">Prototipo</Link></li>
+                    <li><Link className='a-header' to="/SobreNosotros">Sobre Nosotros</Link></li>
+                    <li><Link className='a-header' to="/Contactanos">Contactanos</Link></li>
 
-        </ul>
-      </header>
+                </ul>
+            </header>
 
       {/* // <!--Presentacion de la pagina -->
     // <!-- Imagen de fondo --> */}

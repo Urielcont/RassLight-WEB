@@ -5,6 +5,7 @@ import Principal from './pages/principal'
 import Index from './pages/index'
 import Prototipo from './pages/prototipo'
 import SobreNosotros from './pages/SobreNosotros'
+import Contactanos from './pages/contactanos'
 function App() {
 
   return (
@@ -15,6 +16,8 @@ function App() {
         <Route path='/Principal' element={<Principal/>}></Route>
         <Route path='/Prototipo' element={<Prototipo/>}></Route>
         <Route path='/SobreNosotros' element={<SobreNosotros/>}></Route>
+        <Route path='/Contactanos' element={<Contactanos/>}></Route>
+
       </Routes>
     </BrowserRouter>
   );
