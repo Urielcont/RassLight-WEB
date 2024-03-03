@@ -63,12 +63,17 @@ header {
     user-select: none;
     padding: 10px; 
     text-align: center; 
-    background-image: url('../images/fondo-header.png');
+    background-image: url('../assets/images/fondo-header.png');
     background-size: cover;
     z-index: 1000;
 }
+.a-header-img{
+  background-color: #16c1c8;
+  text-align: center;
+}
 .img-header{
-    max-width:8%;
+    max-width:7%;
+    background-color: yellow;
 }
 ul {
     list-style-type: none; 
