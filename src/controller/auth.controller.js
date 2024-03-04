@@ -1,4 +1,5 @@
 import User from '../model/admin.model.js';
+import Message from "../model/mensaje.model.js";
 import jwt from 'jsonwebtoken';
 
 export const login = async (req, res) => {
@@ -40,6 +41,26 @@ export const logout = async (req, res) => {
     res.json({ token: '' });
   } catch (error) {
     console.error('Error al cerrar sesión:', error);
+    res.status(500).json({ message: 'Error interno del servidor' });
+  }
+}
+
+export const sendMessage = async (req, res) => {
+  try {
+    // Obtener los datos del usuario
+    const { nombres, email, mensaje } = req.body;
+
+    const newMessage = new Message({
+      nombres,
+      email,
+      mensaje
+    });
+
+    await newMessage.save();
+    res.status(201).json({message: "Mensaje enviado correctamente"});
+
+  } catch (error) {
+    console.error('Error al registrar al mandar el mensaje:', error);
     res.status(500).json({ message: 'Error interno del servidor' });
   }
 }

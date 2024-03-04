@@ -1,15 +1,14 @@
 // modelo mensaje recibidos
-
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
+import validator from "validator";
 
 const messageSchema = new mongoose.Schema({
     nombres: {
         type: String,
         required: true,
     },
-    correo: {
+    email: {
         type: String,
-        unique: true,
         lowercase: true,
         required: true,
         validate: (value) => {
@@ -18,10 +17,11 @@ const messageSchema = new mongoose.Schema({
     },
     mensaje: {
         type: String,
+        required: true
     }
 },
 );
 
 const Message = mongoose.model('Message', messageSchema);
 
-module.exports = { Message };
+export default Message;
