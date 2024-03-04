@@ -14,7 +14,7 @@ function Prototipo() {
         <div>
              {/* // Codigo Html */}
       <header >
-                <a href="#" className='a-header-img'><img className="img-header text-center" src={Logo} /></a>
+                <a href="#" className='a-header-img'><img className="img-header text-center m-auto" src={Logo} /></a>
                 <ul>
                     <li><Link className='a-header' to="/">Inicio</Link></li>
                     <li><Link className='a-header' to="/Prototipo">Prototipo</Link></li>

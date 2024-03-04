@@ -19,7 +19,7 @@ function Loginpage() {
         </div>
         <div className="mb-4">
             <label className=" block text-m font-semibold text-black" htmlFor="username">Username</label>
-            <input type="Usuarioinp" {...register('username', { required: true })} id="username" className="mt-1 w-full border rounded-md"  />
+            <input type="Usuarioinp" {...register('username', { required: true })} id="username" className=" text-black mt-1 w-full border rounded-md"  />
             {errors.username && (
                 <p className="text-red-500">Username es Requerido</p>
             )}
@@ -27,7 +27,7 @@ function Loginpage() {
 
         <div className="mb-6">
             <label className="block text-m font-semibold text-black" htmlFor="password">Contraseña</label>
-            <input type="passwordinp" {...register('password', { required: true })} id="password" className="mt-1 w-full border rounded-md"  />
+            <input type="passwordinp" {...register('password', { required: true })} id="password" className="mt-1 w-full border rounded-md text-black"  />
             {errors.password && (
                 <p className="text-red-500">Contraseña es Requerido</p>
             )}

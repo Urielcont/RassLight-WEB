@@ -9,8 +9,8 @@ function Principal() {
         <div>
             <header className="bg-cyan-500 p-6 text-white flex items-center">
             <img className='w-20 start-0' src={logo}></img>
-             <h1 className="text-3xl font-bold text-center	place-items-center">Sistema de Administración</h1>
-             <h1 className="text-1xl text-black text-end	">Salir</h1>
+             <h1 className="text-3xl font-bold text-center m-auto text-black place-items-center">Sistema de Administración</h1>
+             <h1 className="text-1xl text-black text-end">Salir</h1>
             </header>
 
             {/* Contenido Principal */}
