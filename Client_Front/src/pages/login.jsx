@@ -27,7 +27,7 @@ function Loginpage() {
 
         <div className="mb-6">
             <label className="block text-m font-semibold text-black" htmlFor="password">Contraseña</label>
-            <input type="passwordinp" {...register('password', { required: true })} id="password" className="mt-1 w-full border rounded-md text-black"  />
+            <input type="password" {...register('password', { required: true })} id="password" className="mt-1 w-full border rounded-md text-black"  />
             {errors.password && (
                 <p className="text-red-500">Contraseña es Requerido</p>
             )}
