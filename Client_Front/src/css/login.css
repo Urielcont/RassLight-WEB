@@ -7,7 +7,12 @@ input[type="Usuarioinp"],
             border-radius: 0.25rem;
         }
 
-        button[type="submitt"] {
+        button[type="submit"] {
+            background-color: #26ADE4;
+            color: white;
+        }
+
+        button[type="button"] {
             background-color: #26ADE4;
             color: white;
         }

@@ -1,16 +1,16 @@
-// modelo mensaje recibidos
 import mongoose from "mongoose";
 import validator from "validator";
 
 const messageSchema = new mongoose.Schema({
     nombres: {
         type: String,
-        required: true,
+        required: true
     },
-    email: {
+    correo: {
         type: String,
-        lowercase: true,
         required: true,
+        unique: false,
+        lowercase: true,
         validate: (value) => {
             return validator.isEmail(value)
         }
@@ -19,8 +19,7 @@ const messageSchema = new mongoose.Schema({
         type: String,
         required: true
     }
-},
-);
+});
 
 const Message = mongoose.model('Message', messageSchema);
 

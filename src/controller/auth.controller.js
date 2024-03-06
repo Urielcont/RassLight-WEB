@@ -1,6 +1,6 @@
 import User from '../model/admin.model.js';
-import Message from "../model/mensaje.model.js";
-import jwt from 'jsonwebtoken';
+import Message from "../model/message.model.js";
+import { createAccessToken } from "../libs/jwt.js";
 
 export const login = async (req, res) => {
   try {
@@ -19,17 +19,16 @@ export const login = async (req, res) => {
 
     if (!passwordMatch) {
       return res.status(400).json({ message: 'Credenciales incorrectas' });
-
     }
 
     // Si el usuario y la contraseña son correctos, generar un token de autenticación
-    const token = jwt.sign(
-      { id: existing._id, username: existing.username },
-      'utd123',
-      { expiresIn: '1d' }
-    );
-    // Responder con el token
-    res.status(200).json({ token, message: "Se ha iniciado sesion" });
+    const token = await createAccessToken({id: existing._id});
+
+    res.cookie('token', token);
+    res.json({
+      message: "User creadp"
+    })
+
   } catch (error) {
     console.error('Error al iniciar sesión:', error);
     res.status(500).json({ message: 'Error interno del servidor' });
@@ -48,19 +47,23 @@ export const logout = async (req, res) => {
 export const sendMessage = async (req, res) => {
   try {
     // Obtener los datos del usuario
-    const { nombres, email, mensaje } = req.body;
+    const { nombres, correo, mensaje } = req.body;
 
     const newMessage = new Message({
       nombres,
-      email,
+      correo,
       mensaje
     });
 
     await newMessage.save();
-    res.status(201).json({message: "Mensaje enviado correctamente"});
+    res.status(201).json({ message: "Mensaje enviado correctamente" });
 
   } catch (error) {
     console.error('Error al registrar al mandar el mensaje:', error);
     res.status(500).json({ message: 'Error interno del servidor' });
   }
+}
+
+export const profile = (req, res) =>{
+  res.send('profile');
 }
