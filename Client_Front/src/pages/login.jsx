@@ -45,21 +45,11 @@ function Loginpage() {
         </div>
 
         <div className="mb-6">
-          <label
-            className="block text-m font-semibold text-black"
-            htmlFor="password"
-          >
-            Contraseña
-          </label>
-          <input
-            type="passwordinp"
-            {...register("password", { required: true })}
-            id="password"
-            className="mt-1 w-full border rounded-md text-black"
-          />
-          {errors.password && (
-            <p className="text-red-500">Contraseña es Requerido</p>
-          )}
+            <label className="block text-m font-semibold text-black" htmlFor="password">Contraseña</label>
+            <input type="password" {...register('password', { required: true })} id="password" className="mt-1 w-full border rounded-md text-black"  />
+            {errors.password && (
+                <p className="text-red-500">Contraseña es Requerido</p>
+            )}
         </div>
 
         <div className="flex items-center justify-center">
