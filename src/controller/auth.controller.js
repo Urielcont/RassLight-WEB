@@ -2,6 +2,7 @@ import User from '../model/admin.model.js';
 import Message from "../model/message.model.js";
 import { createAccessToken } from "../libs/jwt.js";
 
+//funcion para loguearse
 export const login = async (req, res) => {
   try {
     // Obtener los datos del usuario
@@ -35,7 +36,9 @@ export const login = async (req, res) => {
   }
 }
 
+//Funcion para salirse
 export const logout = async (req, res) => {
+  //Deja el token vacio
   res.cookie("token", "", {
   });
   return res.sendStatus(200);
