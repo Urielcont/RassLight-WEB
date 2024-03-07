@@ -6,6 +6,7 @@ import Index from './pages/index'
 import Prototipo from './pages/prototipo'
 import SobreNosotros from './pages/SobreNosotros'
 import Contactanos from './pages/contactanos'
+import Sidepage from './pages/sidebar'
 function App() {
 
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path='/Prototipo' element={<Prototipo/>}></Route>
         <Route path='/SobreNosotros' element={<SobreNosotros/>}></Route>
         <Route path='/Contactanos' element={<Contactanos/>}></Route>
+        <Route path='/Side' element={<Sidepage/>}></Route>
 
       </Routes>
     </BrowserRouter>
