@@ -33,9 +33,9 @@ function Index() {
 
       <div className="container">
         <div className="text-image">Bienvenido</div>
-        <div className="content-info" id="content" >
+        <div className="mb-12 content-info" id="content" >
           <div>¡Bienvenido a nuestra aplicación!</div>
-          <div>Lorem ipsum dolor sit amet consectetur adipiscing elit, maecenas risus massa blandit turpis cum, tellus nisl primis habitant congue mus. Nascetur netus at pellentesque viverra ornare, taciti euismod eu iaculis. .</div>
+          <div>¡Gracias por unirte a nosotros en nuestra misión de innovación y tecnología IoT! En nuestra aplicación, encontrarás soluciones inteligentes para el monitoreo y control de diversos procesos, incluyendo el emocionante mundo de la purificación de agua.</div>
         </div>
         <a className="button-image" href="#SobreNosotros-info">Explorar</a>
       </div>
@@ -51,7 +51,7 @@ function Index() {
       <div className="acerca-de-Nosotros">
         <div className="text-content">
           <h2>Sobre Nosotros</h2>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum recusandae error aperiam obcaecati non! Dolores blanditiis exercitationem illo voluptatibus dolor maiores debitis natus, amet, at quasi voluptate! Accusamus, quae nisi!</p>
+          <p>En esta página, nos gustaría compartir un poco más sobre quiénes somos, nuestra pasión por la innovación y cómo nos esforzamos por ofrecer soluciones de vanguardia en el mundo de la tecnología IoT.</p>
           <ul>
             <li>Opcion 1</li>
             <li>Opcion 2</li>
@@ -70,3 +70,4 @@ function Index() {
 
 {/* // Exportar componente Index */ }
 export default Index;
+
