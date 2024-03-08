@@ -31,8 +31,8 @@ return(
     <button className="boton-azul">Vision</button>
     <div >
         <div className="contenedor-azul">
-            <h2>Infraestructura en la nube</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id aliquid possimus maxime dolores quisquam commodi repellendus modi, ex deleniti at? Aspernatur amet aut et expedita iusto sint omnis? Architecto, officia! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente, soluta! Aspernatur est facilis, voluptatum velit quaerat eius incidunt, ab alias inventore nihil ipsum, qui architecto fugiat error. Aliquid, obcaecati non.</p>
+            <h2 className='text-white font-semibold text-lg mb-2'>Infraestructura en la nube</h2>
+            <p>En RassLight, nuestra visión es liderar la revolución tecnológica en el mundo de los prototipos IoT. Nos esforzamos por ser reconocidos como pioneros en el desarrollo de soluciones inteligentes y sostenibles que mejoren la calidad de vida de las personas y contribuyan al progreso de la sociedad.</p>
         </div>
         <div className="imagen">
             <img className="img" src={Software} alt="Imagen"/>
@@ -45,8 +45,8 @@ return(
             <img className="img2" src={Software} alt="Imagen"/>
         </div>
         <div className="contenedor-azul2">
-            <h2>Infraestructura en la nube</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id aliquid possimus maxime dolores quisquam commodi repellendus modi, ex deleniti at? Aspernatur amet aut et expedita iusto sint omnis? Architecto, officia! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente, soluta! Aspernatur est facilis, voluptatum velit quaerat eius incidunt, ab alias inventore nihil ipsum, qui architecto fugiat error. Aliquid, obcaecati non.</p>
+            <h2 className='text-white font-semibold text-lg mb-2' >Infraestructura en la nube</h2>
+            <p>Nuestra misión es proporcionar soluciones innovadoras y personalizadas que aprovechen al máximo el potencial de la tecnología IoT. Nos comprometemos a trabajar en estrecha colaboración con nuestros clientes para entender sus necesidades únicas y ofrecer productos y servicios de la más alta calidad que superen sus expectativas.</p>
         </div>
     </div>
     {/* <br><br><br><br><br><br><br><br><br><br><br> */}
