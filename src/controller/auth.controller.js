@@ -27,7 +27,7 @@ export const login = async (req, res) => {
 
     res.cookie('token', token);
     res.json({
-      message: "User creadp"
+      message: "User logeado"
     })
 
   } catch (error) {
