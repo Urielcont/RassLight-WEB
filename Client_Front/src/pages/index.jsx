@@ -1,6 +1,7 @@
 // Pagina Principal Landing
-import {Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
+import 'bootstrap-icons/font/bootstrap-icons.css';
 // Importar los estilos
 import '../css/style-index.css'
 // Importar las imagenes a autilizar
@@ -10,6 +11,7 @@ import software from '../assets/images/soft.jpg'
 import Iot from '../assets/images/Iot.jpg'
 import Nube from '../assets/images/nube.jpg'
 import DesarrolloWeb from '../assets/images/desarrolloweb.png'
+import FondoFace from '../assets/images/fondo-footer-facebook.jpg'
 
 function Index() {
 
@@ -17,15 +19,15 @@ function Index() {
     <div>
       {/* // Codigo Html */}
       <header >
-                <a href="#" className='a-header-img'><img className="img-header text-center m-auto" src={Logo} /></a>
-                <ul>
-                    <li><Link className='a-header' to="/">Inicio</Link></li>
-                    <li><Link className='a-header' to="/Prototipo">Prototipo</Link></li>
-                    <li><Link className='a-header' to="/SobreNosotros">Sobre Nosotros</Link></li>
-                    <li><Link className='a-header' to="/Contactanos">Contactanos</Link></li>
+        <a href="#" className='a-header-img'><img className="img-header text-center m-auto" src={Logo} /></a>
+        <ul>
+          <li><Link className='a-header' to="/">Inicio</Link></li>
+          <li><Link className='a-header' to="/Prototipo">Prototipo</Link></li>
+          <li><Link className='a-header' to="/SobreNosotros">Sobre Nosotros</Link></li>
+          <li><Link className='a-header' to="/Contactanos">Contactanos</Link></li>
 
-                </ul>
-            </header>
+        </ul>
+      </header>
 
       {/* // <!--Presentacion de la pagina -->
     // <!-- Imagen de fondo --> */}
@@ -64,7 +66,52 @@ function Index() {
 
         <img src={DesarrolloWeb} className="img-sobrenosotros" alt="No se encontró la imagen" />
       </div>
+
+      {/*  footer */}
+      <div className="footer h-80 bg-slate-800">
+        {/* Redes sociales */}
+        <div className="grid grid-cols-4  justify-center h-20 bg-orange-100 ">
+          {/* Facebook */}
+          <div className="bg-gradient-to-r from-cyan-500 to-blue-500">
+            <img className="h-20 w-full " src={FondoFace} alt="" />
+            <div>
+              <i className="bi bi-facebook" ></i>
+              <p className="text-center font-extrabold" >Facebook</p>
+            </div>
+
+          </div>
+          {/* Instagram */}
+          <div>
+            <img className="h-20 w-full" src={FondoFace} alt="" />
+            <div>
+              <i className="bi bi-instagram" ></i>
+              <p className="text-center font-extrabold" >Instagram</p>
+            </div>
+          </div>
+          {/* YouTube */}
+          <div>
+            <img className="h-20 w-full" src={FondoFace} alt="" />
+            <div>
+              <i className="bi bi-youtube" ></i>
+              <p className="text-center font-extrabold" >YouTube</p>
+            </div>
+          </div>
+          {/* Whatsapp */}
+          <div>
+            <img className="h-20 w-full" src={FondoFace} alt="" />
+            <div>
+              <i className="bi bi-whatsapp" ></i>
+              <p className="text-center font-extrabold" >Whatsapp</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
+
+
+
+
   )
 }
 
