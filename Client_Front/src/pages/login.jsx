@@ -14,11 +14,24 @@ function Loginpage() {
   } = useForm();
 
   const onSubmit = async (values) => {
-    console.log(values);
-    const res = await loginRequest(values);
-    console.log(res);
-  };
 
+    try {
+      // Realiza la solicitud de inicio de sesión
+      const res = await loginRequest(values);
+      console.log(res);
+      console.log(values)
+      
+      // Verifica si la solicitud fue exitosa
+      if (res.status === 200 && res.data === "Inicio de sesión exitoso") {
+          console.log("Inicio de sesión exitoso");
+          window.location.href = '/principal';
+      } else {
+          console.error("Error en el inicio de sesión:", res.status, res.statusText);
+      }
+  } catch (error) {
+      console.error("Error en la solicitud:", error.message);
+  }
+}
   return (
     <div className="bg-gray-200 h-screen flex items-center justify-center">
       <div className="bg-white py-10 px-12 rounded-lg shadow-md flex flex-col items-center w-full max-w-sm">

@@ -16,9 +16,7 @@ export const login = async (req, res) => {
     }
 
     // Comparar la contraseña proporcionada con la contraseña almacenada en la base de datos
-    const passwordMatch = (password, existing.password);
-
-    if (!passwordMatch) {
+    if (password !== existing.password) {
       return res.status(400).json({ message: 'Credenciales incorrectas' });
     }
 
@@ -27,7 +25,7 @@ export const login = async (req, res) => {
 
     res.cookie('token', token);
     res.json({
-      message: "User creadp"
+      message: "Inicio sesion"
     })
 
   } catch (error) {
