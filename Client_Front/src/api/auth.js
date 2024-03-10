@@ -1,6 +1,5 @@
-import axios from "axios";
+import axios from "./axios";
 
-const API = 'http://localhost:3000/api'
-
-export const sendMessageRequest = message => axios.post(`${API}/sendMessage`, message);
-export const loginRequest = user => axios.post(`${API}/login`, user);
+export const sendMessageRequest = message => axios.post(`/sendMessage`, message);
+export const loginRequest = user => axios.post(`/login`, user);
+export const verifyTokenRequest = () => axios.get('/verify')

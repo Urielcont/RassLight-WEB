@@ -1,12 +1,13 @@
 import { useForm } from "react-hook-form";
-import { loginRequest } from "../api/auth.js";
-
+import { useAuth } from "../context/authContext.jsx";
 // Importar las imagenes a utilizar
 import Logo from "../assets/images/logo.png";
 
 import "../css/login.css";
 
 function Loginpage() {
+  const { signin, errors: signinErrors } = useAuth();
+
   const {
     register,
     handleSubmit,
@@ -14,33 +15,25 @@ function Loginpage() {
   } = useForm();
 
   const onSubmit = async (values) => {
-
-    try {
-      // Realiza la solicitud de inicio de sesión
-      const res = await loginRequest(values);
-      console.log(res);
-      console.log(values)
-      
-      // Verifica si la solicitud fue exitosa
-      if (res.status === 200 && res.data === "Inicio de sesión exitoso") {
-          console.log("Inicio de sesión exitoso");
-          window.location.href = '/principal';
-      } else {
-          console.error("Error en el inicio de sesión:", res.status, res.statusText);
-      }
-  } catch (error) {
-      console.error("Error en la solicitud:", error.message);
-  }
-}
+    signin(values);
+  };
   return (
     <div className="bg-gray-200 h-screen flex items-center justify-center">
       <div className="bg-white py-10 px-12 rounded-lg shadow-md flex flex-col items-center w-full max-w-sm">
+    {
+      signinErrors.map((error, i) =>(
+        <div className="bg-red-500 p-2 text-white" key={i}>
+          {error}
+        </div>
+        ))
+    }
+
         <div className="mb-4">
           <img className="h-24 w-auto" src={Logo} alt="Logo" />
         </div>
         <form className="w-full max-w-sm" onSubmit={handleSubmit(onSubmit)}>
-        <h2 className="text-center text-3xl font-thin text-black">Login</h2>
-        <br />
+          <h2 className="text-center text-3xl font-thin text-black">Login</h2>
+          <br />
           <div className="mb-4">
             <label
               className="block text-m font-semibold text-black"
@@ -82,7 +75,8 @@ function Loginpage() {
               type="button"
               onClick={handleSubmit(onSubmit)}
               className="rounded-full text-white p-2 w-36 bg-blue-500 hover:bg-blue-600"
-            >Ingresar
+            >
+              Ingresar
             </button>
           </div>
         </form>
