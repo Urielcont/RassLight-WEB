@@ -9,6 +9,7 @@ import SobreNosotros from "./pages/SobreNosotros";
 import Contactanos from "./pages/contactanos";
 
 import ProtectedRoute from "./protectedRoute.jsx";
+import { MessageProvider } from "./context/MessageContext.jsx";
 
 function App() {
   return (
@@ -19,11 +20,12 @@ function App() {
           <Route path="/login" element={<Loginpage />}></Route>
           <Route path="/Prototipo" element={<Prototipo />}></Route>
           <Route path="/SobreNosotros" element={<SobreNosotros />}></Route>
-          <Route path="/Contactanos" element={<Contactanos />}></Route>
-
-          <Route element={<ProtectedRoute />}>
-            <Route path="/Principal" element={<Principal />}></Route>
-          </Route>
+          <MessageProvider>
+            <Route path="/Contactanos" element={<Contactanos />}></Route>
+            <Route element={<ProtectedRoute />}>
+              <Route path="/Principal" element={<Principal />}></Route>
+            </Route>
+          </MessageProvider>
         </Routes>
       </BrowserRouter>
     </AuthProvider>
