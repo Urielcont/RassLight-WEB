@@ -1,12 +1,15 @@
 import { useForm } from "react-hook-form";
 import { useAuth } from "../context/authContext.jsx";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 // Importar las imagenes a utilizar
 import Logo from "../assets/images/logo.png";
 
 import "../css/login.css";
 
 function Loginpage() {
-  const { signin, errors: signinErrors } = useAuth();
+  const { signin, errors: signinErrors ,  isAuthenticated  } = useAuth();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -14,9 +17,15 @@ function Loginpage() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = async (values) => {
-    signin(values);
-  };
+  const onSubmit = (data) => signin(data) 
+  
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/principal");
+    }
+  }, [isAuthenticated, navigate]);
+
+
   return (
     <div className="bg-gray-200 h-screen flex items-center justify-center">
       <div className="bg-white py-10 px-12 rounded-lg shadow-md flex flex-col items-center w-full max-w-sm">
