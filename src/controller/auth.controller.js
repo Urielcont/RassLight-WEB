@@ -23,7 +23,7 @@ export const login = async (req, res) => {
     }
 
     // Si el usuario y la contraseña son correctos, generar un token de autenticación
-    const token = await createAccessToken({id: existing._id});
+    const token = await createAccessToken({ id: existing._id });
 
     res.cookie('token', token, {
       sameSite: 'none',
@@ -56,11 +56,13 @@ export const sendMessage = async (req, res) => {
     const newMessage = new Message({
       nombres,
       correo,
-      mensaje
+      mensaje,
+      fecha: new Date()
     });
 
     await newMessage.save();
     res.status(201).json({ message: "Mensaje enviado correctamente" });
+    console.log(newMessage);
 
   } catch (error) {
     console.error('Error al registrar al mandar el mensaje:', error);
@@ -68,10 +70,30 @@ export const sendMessage = async (req, res) => {
   }
 }
 
-export const profile = async (req, res) =>{
+export const getMessages = async (req, res) => {
+  try {
+    // Utiliza el método find para obtener todos los mensajes
+    const messages = await Message.find();
+
+    console.log(messages)
+
+    // Si no hay mensajes, devuelve un mensaje indicando que no hay mensajes
+    if (!messages || messages.length === 0) {
+      return res.status(404).json({ message: "No se encontraron mensajes" });
+    }
+
+    // Si hay mensajes, devuélvelos en la respuesta
+    res.status(200).json(messages);
+  } catch (error) {
+    console.error('Error al obtener los mensajes:', error);
+    res.status(500).json({ message: 'Error interno del servidor' });
+  }
+}
+
+export const profile = async (req, res) => {
   const userFound = await User.findById(req.user.id);
 
-  if(!userFound) return res.status(400).json({message: "Usuario no encontrado"});
+  if (!userFound) return res.status(400).json({ message: "Usuario no encontrado" });
   return res.json({
     id: userFound._id,
     username: userFound.username
@@ -80,22 +102,22 @@ export const profile = async (req, res) =>{
 }
 
 export const verifyToken = async (req, res) => {
-  const {token} = req.cookies
+  const { token } = req.cookies
 
-  if (!token) return res.status(401).json({message: "No autorizado"});
+  if (!token) return res.status(401).json({ message: "No autorizado" });
 
   jwt.verify(token, TOKEN_SECRET, async (err, user) => {
-    if (err) return res.status(401).json({message: "No autorizado"});
+    if (err) return res.status(401).json({ message: "No autorizado" });
 
     const userFound = await User.findById(user.id)
-    
-    if (!userFound) return res.status(401).json({message: "No autorizado"});
+
+    if (!userFound) return res.status(401).json({ message: "No autorizado" });
 
     return res.json({
       id: userFound._id,
       username: userFound.username,
       email: userFound.email
     });
-    
+
   })
 }

@@ -4,18 +4,17 @@ import '../css/style-index.css'
 // Importar imagenes
 import Logo from '../assets/images/logo.png'
 import {Link } from "react-router-dom";
-import {sendMessageRequest} from '../api/auth.js';
+import { useMessage } from '../context/MessageContext.jsx';
 
 
 function Contactanos() {
     const {register, handleSubmit} = useForm();
 
-    const onSubmit = async (values) => {
-        console.log(values);
-        const res = await sendMessageRequest(values);
-        console.log('Mensaje correcto')
-        console.log(res);
-    };
+    const {createMessage} = useMessage();
+
+    const onSubmit = handleSubmit((data) => {
+        createMessage(data);
+    })
     return (
         <div>
             {/* // Codigo Html */}

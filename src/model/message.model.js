@@ -18,6 +18,9 @@ const messageSchema = new mongoose.Schema({
     mensaje: {
         type: String,
         required: true
+    },
+    fecha: {
+        type: Date
     }
 });
 

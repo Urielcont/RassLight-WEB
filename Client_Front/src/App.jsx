@@ -9,24 +9,25 @@ import SobreNosotros from "./pages/SobreNosotros";
 import Contactanos from "./pages/contactanos";
 
 import ProtectedRoute from "./protectedRoute.jsx";
-// import { MessageProvider } from "./context/MessageContext.jsx";
+import { MessageProvider } from "./context/MessageContext.jsx";
 
 function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />}></Route>
-          <Route path="/login" element={<Loginpage />}></Route>
-          <Route path="/Prototipo" element={<Prototipo />}></Route>
-          <Route path="/SobreNosotros" element={<SobreNosotros />}></Route>
-          {/* <MessageProvider> */}
+        <MessageProvider>
+          <Routes>
+            <Route path="/" element={<Index />}></Route>
+            <Route path="/Prototipo" element={<Prototipo />}></Route>
+            <Route path="/SobreNosotros" element={<SobreNosotros />}></Route>
             <Route path="/Contactanos" element={<Contactanos />}></Route>
+
+            <Route path="/login" element={<Loginpage />}></Route>
             <Route element={<ProtectedRoute />}>
               <Route path="/Principal" element={<Principal />}></Route>
             </Route>
-          {/* </MessageProvider> */}
-        </Routes>
+          </Routes>
+        </MessageProvider>
       </BrowserRouter>
     </AuthProvider>
   );
