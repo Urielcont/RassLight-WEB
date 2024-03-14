@@ -1,3 +1,4 @@
+import { useState } from "react"; // Agregar useState
 import { useForm } from "react-hook-form";
 import { useAuth } from "../context/authContext.jsx";
 import { useEffect } from "react";
@@ -8,8 +9,10 @@ import Logo from "../assets/images/logo.png";
 import "../css/login.css";
 
 function Loginpage() {
-  const { signin, errors: signinErrors ,  isAuthenticated  } = useAuth();
+  const { signin, errors: signinErrors, isAuthenticated } = useAuth();
   const navigate = useNavigate();
+
+  const [formCompleted, setFormCompleted] = useState(false); // Estado para controlar si los campos están completos
 
   const {
     register,
@@ -17,30 +20,38 @@ function Loginpage() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => signin(data) 
-  
+  const onSubmit = (data) => signin(data);
+
   useEffect(() => {
     if (isAuthenticated) {
       navigate("/principal");
     }
   }, [isAuthenticated, navigate]);
 
+  // Función para verificar si los campos están completos
+  const checkFormCompletion = () => {
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+    setFormCompleted(username !== "" && password !== "");
+  };
 
   return (
     <div className="bg-gray-200 h-screen flex items-center justify-center">
       <div className="bg-white py-10 px-12 rounded-lg shadow-md flex flex-col items-center w-full max-w-sm">
-    {
-      signinErrors.map((error, i) =>(
-        <div className="bg-red-500 p-2 text-white" key={i}>
-          {error}
-        </div>
-        ))
-    }
+        {signinErrors.map((error, i) => (
+          <div className="bg-red-500 p-2 text-white" key={i}>
+            {error}
+          </div>
+        ))}
 
         <div className="mb-4">
           <img className="h-24 w-auto" src={Logo} alt="Logo" />
         </div>
-        <form className="w-full max-w-sm" onSubmit={handleSubmit(onSubmit)}>
+        <form
+          className="w-full max-w-sm"
+          onSubmit={handleSubmit(onSubmit)}
+          onChange={checkFormCompletion} // Verificar los cambios en los campos de entrada
+        >
           <h2 className="text-center text-3xl font-thin text-black">Login</h2>
           <br />
           <div className="mb-4">
@@ -81,9 +92,14 @@ function Loginpage() {
 
           <div className="flex items-center justify-center">
             <button
-              type="button"
-              onClick={handleSubmit(onSubmit)}
-              className="rounded-full text-white p-2 w-36 bg-blue-500 hover:bg-blue-600"
+              type="submit"
+              disabled={!formCompleted}
+              id="botonIngresar"
+              className={`rounded-full text-white p-2 w-36 ${
+                formCompleted
+                  ? "bg-blue-500 hover:bg-blue-600"
+                  : "disabled-button"
+              }`}
             >
               Ingresar
             </button>
