@@ -3,9 +3,7 @@
 // Importar los estilos
 import '../css/style-index.css'
 import '../css/nosotros.css'
-import { Link } from 'react-router-dom'
 // Importar las imagenes a autilizar
-import Logo from '../assets/images/logo.png'
 import Sensor from '../assets/images/sensor.jpeg'
 import Sensor1 from '../assets/images/ph.png'
 import Sensor2 from '../assets/images/flujo.png'
@@ -13,22 +11,15 @@ import Sensor3 from '../assets/images/turbi.jpg'
 
 import Iot from '../assets/images/Iot.jpg'
 
+// Importar Componentes
+import Header from '../components/header'
 import Footer from '../components/footer'
 function Prototipo() {
     return (
         <div>
              {/* // Codigo Html */}
-      <header >
-                <a href="#" className='a-header-img'><img className="img-header text-center m-auto" src={Logo} /></a>
-                <ul>
-                    <li><Link className='a-header' to="/">Inicio</Link></li>
-                    <li><Link className='a-header' to="/Prototipo">Prototipo</Link></li>
-                    <li><Link className='a-header' to="/SobreNosotros">Sobre Nosotros</Link></li>
-                    <li><Link className='a-header' to="/Contactanos">Contactanos</Link></li>
-
-                </ul>
-            </header>
-
+             {/* Importar Header */}
+             <Header></Header>
 
             <img src={Iot} className="img-incio-proto" alt="No se encontró la imagen" />
 

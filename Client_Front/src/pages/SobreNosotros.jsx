@@ -1,13 +1,14 @@
 // Pagina SObre Nosotros
-import { Link } from 'react-router-dom';
 
 import "../css/nosotros.css";
 import "../css/style-index.css";
 
 // Importar las imagenes a autilizar
-import Logo from '../assets/images/logo.png'
 import Software from '../assets/images/soft.jpg'
 
+
+// Importar Componentes
+import Header from '../components/header';
 import Footer from '../components/footer'
 
 
@@ -15,33 +16,7 @@ function SobreNosotros() {
   return (
     <div>
       {/* // Codigo Html */}
-      <header>
-        <a href="#" className="a-header-img">
-          <img className="img-header text-center m-auto" src={Logo} />
-        </a>
-        <ul>
-          <li>
-            <Link className="a-header" to="/">
-              Inicio
-            </Link>
-          </li>
-          <li>
-            <Link className="a-header" to="/Prototipo">
-              Prototipo
-            </Link>
-          </li>
-          <li>
-            <Link className="a-header" to="/SobreNosotros">
-              Sobre Nosotros
-            </Link>
-          </li>
-          <li>
-            <Link className="a-header" to="/Contactanos">
-              Contactanos
-            </Link>
-          </li>
-        </ul>
-      </header>
+      <Header></Header>
 
       <h1 className="titulos">Sobre Nosotros</h1>
 

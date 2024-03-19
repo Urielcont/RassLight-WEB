@@ -1,17 +1,16 @@
 // Pagina Principal Landing
-import { Link } from "react-router-dom";
-
 import 'bootstrap-icons/font/bootstrap-icons.css';
 // Importar los estilos
 import '../css/style-index.css'
 // Importar las imagenes a autilizar
-import Logo from '../assets/images/logo.png'
 import fondoIncio from '../assets/images/fondo-inicio.png'
 import software from '../assets/images/soft.jpg'
 import Iot from '../assets/images/Iot.jpg'
 import Nube from '../assets/images/nube.jpg'
 import DesarrolloWeb from '../assets/images/desarrolloweb.png'
 // import FondoFace from '../assets/images/fondo-footer-facebook.jpg'
+
+import Header from "../components/header";
 import Footer from "../components/footer";
 
 function Index() {
@@ -19,16 +18,7 @@ function Index() {
   return (
     <div>
       {/* // Codigo Html */}
-      <header >
-        <a href="#" className='a-header-img'><img className="img-header text-center m-auto" src={Logo} /></a>
-        <ul>
-          <li><Link className='a-header' to="/">Inicio</Link></li>
-          <li><Link className='a-header' to="/Prototipo">Prototipo</Link></li>
-          <li><Link className='a-header' to="/SobreNosotros">Sobre Nosotros</Link></li>
-          <li><Link className='a-header' to="/Contactanos">Contactanos</Link></li>
-
-        </ul>
-      </header>
+      <Header></Header>
 
       {/* // <!--Presentacion de la pagina -->
     // <!-- Imagen de fondo --> */}

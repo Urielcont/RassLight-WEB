@@ -3,9 +3,10 @@ import { useForm } from "react-hook-form";
 import "../css/style-index.css";
 // Importar imagenes
 import Logo from "../assets/images/logo.png";
-import { Link } from "react-router-dom";
 import { useMessage } from "../context/MessageContext.jsx";
 
+// Importar Componentes
+import Header from "../components/header.jsx";
 import Footer from "../components/footer.jsx";
 
 function Contactanos() {
@@ -19,34 +20,9 @@ function Contactanos() {
   return (
     <div>
       {/* // Codigo Html */}
-      <header>
-        <a href="#" className="a-header-img">
-          <img className="img-header text-center m-auto" src={Logo} />
-        </a>
-        <ul>
-          <li>
-            <Link className="a-header" to="/">
-              Inicio
-            </Link>
-          </li>
-          <li>
-            <Link className="a-header" to="/Prototipo">
-              Prototipo
-            </Link>
-          </li>
-          <li>
-            <Link className="a-header" to="/SobreNosotros">
-              Sobre Nosotros
-            </Link>
-          </li>
-          <li>
-            <Link className="a-header" to="/Contactanos">
-              Contactanos
-            </Link>
-          </li>
-        </ul>
-      </header>
-
+     {/* Importar Header */}
+     <Header></Header>
+     
       <img src={Logo} className="logo-pic" alt="Imagen Descriptiva" />
 
       <form
