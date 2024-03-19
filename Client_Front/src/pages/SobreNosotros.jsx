@@ -9,6 +9,9 @@ import '../css/style-index.css';
 import Logo from '../assets/images/logo.png'
 import Software from '../assets/images/soft.jpg'
 
+import Footer from '../components/footer'
+
+
 function SobreNosotros(){
 return(
 
@@ -51,6 +54,9 @@ return(
     </div>
     {/* <br><br><br><br><br><br><br><br><br><br><br> */}
     <h1 className="titulos">Nuestro Enfoque</h1>
+
+    {/* Importar Footer */}
+    <Footer></Footer>
     </div>
 );
 }

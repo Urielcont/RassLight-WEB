@@ -13,6 +13,7 @@ import Sensor3 from '../assets/images/turbi.jpg'
 
 import Iot from '../assets/images/Iot.jpg'
 
+import Footer from '../components/footer'
 function Prototipo() {
     return (
         <div>
@@ -78,6 +79,7 @@ function Prototipo() {
                 </div>
                 {/* <!-- Agrega más filas según sea necesario --> */}
             </div>
+            <Footer></Footer>
         </div>
     );
 }

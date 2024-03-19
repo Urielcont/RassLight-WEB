@@ -240,7 +240,17 @@ li {
 }
 
 
+.a-footer{
+    
+  color: #fff;
+  text-decoration: none;
+  font-weight: 200;  
+  font-size: 15px;
+}
 
+.a-footer:hover{
+  color: #16c1c8;
+}
 
 
 
