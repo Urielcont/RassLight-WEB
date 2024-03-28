@@ -1,8 +1,5 @@
 /* Estilos general para la página index */
 * {
-  list-style: none;
-  text-decoration: none;
-  text-decoration-line: none;
 }
 
 /* Estilos para el body */
@@ -80,14 +77,14 @@ header {
   background-color: yellow;
 }
 
-ul {
+.header ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  margin-top: 50px;
+  margin-top: 10px;
 }
 
-li {
+.header li {
   display: inline;
   margin-right: 20px;
 }
@@ -141,7 +138,6 @@ li {
 
 .text-content ul {
   list-style: circle;
-  list-style-type: decimal;
   padding: 0;
   margin: 0;
   color: #777;
@@ -149,6 +145,7 @@ li {
 
 .text-content li {
   margin-bottom: 5px;
+  
 }
 
 /* .img-sobrenosotros {
@@ -280,4 +277,13 @@ button {
   height: auto;
   display: block;
   margin: 20px auto;
+}
+
+
+/* darle color a la lista de prototipo */
+.proto-list{
+  list-style-type: circle;
+}
+.proto-list li:before {
+  background: green;
 }

@@ -6,7 +6,7 @@ function Header()
 {
     return(
         <div>
-            <header className="sm:px-10 md:px-20">
+            <header className="sm:px-10 md:px-20 header">
                 <a href="#" className=''><img className="img-header inline text-center" src={Logo} /></a>
                 <ul>
                     <li><Link className='a-header' to="/">Inicio</Link></li>

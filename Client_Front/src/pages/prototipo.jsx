@@ -17,9 +17,9 @@ import Footer from '../components/footer'
 function Prototipo() {
     return (
         <div>
-             {/* // Codigo Html */}
-             {/* Importar Header */}
-             <Header></Header>
+            {/* // Codigo Html */}
+            {/* Importar Header */}
+            <Header></Header>
 
             <img src={Iot} className="img-incio-proto" alt="No se encontró la imagen" />
 
@@ -50,7 +50,7 @@ function Prototipo() {
                 </div>
             </div>
 
-    <h2 className='text-black font-semibold text-3xl ml-5 mt-5'>Componentes</h2>
+            <h2 className='text-black font-semibold text-3xl ml-5 mt-5'>Componentes</h2>
             <div className="grid place-items-center grid-cols-2 mx-48">
                 <div className="content-center">
                     <img src={Sensor1} alt="Image 1" className="h-auto max-w-80" />
@@ -73,7 +73,27 @@ function Prototipo() {
                     <h1 className='font-bold text-xl'>Turbidez</h1>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis nostrum dolores doloremque, sunt at tenetur. Aspernatur nesciunt assumenda, saepe, facilis repudiandae perspiciatis veniam commodi, quos modi sit deserunt a voluptas?</p>
                 </div>
-                {/* <!-- Agrega más filas según sea necesario --> */}
+
+            </div>
+            {/* Parte de especificaciones*/}
+            <div className='grid place-items-center grid-cols-2  bg-gray-500 h-auto'>
+                <div>
+                    <h1 className='text-white'>ESPECIFICACIONES</h1>
+                </div>
+                <div className='mt-6'>
+                    <ul className='text-white proto-list' >
+                        <li>1</li>
+                        <li>2</li>
+                        <li>3</li>
+                        <li>4</li>
+                    </ul>
+                </div>
+                <div>
+                    <h1 className='text-white'>DOCUMENTACION</h1>
+                </div>
+                <div>
+                    <a href="" className='text-blue-200'>Documentacion Oficial</a>
+                </div>
             </div>
             <Footer></Footer>
         </div>
