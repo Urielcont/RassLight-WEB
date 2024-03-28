@@ -1,196 +1,200 @@
-/* Estilos general para la pagina index */
-*{
-    list-style: none;
-    text-decoration: none;
-    text-decoration-line: none;
+/* Estilos general para la página index */
+* {
+  list-style: none;
+  text-decoration: none;
+  text-decoration-line: none;
 }
 
 /* Estilos para el body */
-.body{
-    margin: 0;
-    padding: 0;
+.body {
+  margin: 0;
+  padding: 0;
+}
 
-}
 /* Estilos para todas las etiquetas a */
-a{
-    text-decoration: none;
+a {
+  text-decoration: none;
 }
-/* Texto grnade "Bienvenido" */
-.text-image{
-    user-select: none;
-    position: absolute; 
-    top: 40%; 
-    left: 50%; 
-    transform: translate(-50%, -50%); 
-    text-align: center; 
-    color: white; 
-    font-size: 10vmax; 
-    font-family: "Inter", sans-serif;
-    font-weight: bold;
+
+/* Texto grande "Bienvenido" */
+.text-image {
+  user-select: none;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  font-size: 10vmax;
+  font-family: "Inter", sans-serif;
+  font-weight: bold;
 }
-/* Texto pequeño descripcion */
-.content-info{
-    position: absolute; 
-    top: 60%; 
-    left: 50%; 
-    transform: translateX(-50%); 
-    text-align: 
-    center; color: white;
-    font-size: 1.2vmax;
+
+/* Texto pequeño descripción */
+.content-info {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: white;
+  font-size: 1.2vmax;
 }
-/* boton de la pagina */
-.button-image{
-    position: absolute;
-    width: 15%;
-    text-align: center;
-    top: 75%; 
-    left: 50%; 
-    transform: translateX(-50%); 
-    background-color: #16c1c8; 
-    color: white; 
-    padding: 10px 20px; 
-    border: none; 
-    border-radius: 8px; 
-    font-size: 1vmax; 
-    cursor: pointer;
-    text-decoration: none;
+
+/* Botón de la página */
+.button-image {
+  position: absolute;
+  width: 15%;
+  text-align: center;
+  top: 75%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #16c1c8;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1vmax;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 header {
-    /* position: fixed; */
-    width: 100%;
-    height: 150px;
-    user-select: none;
-    padding: 10px; 
-    text-align: center; 
-    background-image: url('../assets/images/fondo-header.png');
-    background-size: cover;
-    z-index: 1000;
+  width: 100%;
+  height: 150px;
+  user-select: none;
+  padding: 10px;
+  text-align: center;
+  background-image: url('../assets/images/fondo-header.png');
+  background-size: cover;
+  z-index: 1000;
 }
-.a-header-img{
+
+.a-header-img {
   background-color: #16c1c8;
   text-align: center;
 }
-.img-header{
-    max-width:7%;
-    background-color: yellow;
+
+.img-header {
+  max-width: 7%;
+  background-color: yellow;
 }
+
 ul {
-    list-style-type: none; 
-    margin: 0;
-    padding: 0;
-    margin-top: 50px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  margin-top: 50px;
 }
 
 li {
-    display: inline; 
-    margin-right: 20px; 
-    
-}
-.a-header{
-    
-    color: #000;
-    text-decoration: none;
-    /* color: white; */
-    font-weight: bold;  
-    font-size: 20px;
+  display: inline;
+  margin-right: 20px;
 }
 
-.a-header:hover{
-    color: #16c1c8;
+.a-header {
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 20px;
 }
-.div-servicios{
-    margin-top: 30px;
-    position: relative;
-    text-align: center;
+
+.a-header:hover {
+  color: #16c1c8;
 }
-.div-servicios img{
-   height: 250px;
+
+.div-servicios {
+  margin-top: 30px;
+  position: relative;
+  text-align: center;
 }
+
+.div-servicios img {
+  height: 250px;
+}
+
 .img-servicios {
-    width: 30%;
-    display: inline-block;
-    margin-left: 2%; /* Adjust the margin as needed */
-  }
-
-/*  */
-.acerca-de-Nosotros {
-    display: flex;
-    margin: 50px;
-  }
-
-  .text-content {
-    flex: 1; 
-    padding-right: 20px; 
-  }
-
-  .text-content h2 {
-    color: #333; 
-  }
-
-  .text-content p {
-    color: #555;
-    font-size: 20px;
-  }
-
-  .text-content ul {
-    list-style: circle;
-    list-style-type: decimal;
-    padding: 0;
-    margin: 0;
-    color: #777; 
-  }
-
-  .text-content li {
-    margin-bottom: 5px; 
-  }
-
-  .img-sobrenosotros {
-    max-width: 40%;
-    height: auto;
-  }
-  .button-image2{
-    padding: 100px;
-    width: 55%;
-    text-align: center;
-    background-color: #4be150; 
-    color: white; 
-    padding: 10px 20px; 
-    border: none; 
-    border-radius: 8px; 
-    font-size: 1vmax; 
-    cursor: pointer;
-    text-decoration: none;
+  width: 30%;
+  display: inline-block;
+  margin-left: 2%; /* Adjust the margin as needed */
 }
 
+.acerca-de-Nosotros {
+  display: flex;
+  margin: 30px;
+}
 
-.img-incio-proto{
+.text-content {
+  flex: 1;
+  padding-right: 20px;
+}
+
+.text-content h2 {
+  color: #000;
+}
+
+.text-content p {
+  color: #000;
+  font-size: 2.3vmin;
+  line-height: 1.5;
+}
+
+.text-content ul {
+  list-style: circle;
+  list-style-type: decimal;
+  padding: 0;
+  margin: 0;
+  color: #777;
+}
+
+.text-content li {
+  margin-bottom: 5px;
+}
+
+/* .img-sobrenosotros {
+ width: 10vmax;
+ height: 20vmax;
+} */
+
+.button-image2 {
+  padding: 100px;
+  width: 55%;
+  text-align: center;
+  background-color: #4be150;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1vmax;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.img-incio-proto {
   width: 100%;
 }
 
-
 .dark-container {
   margin-top: 100px;
-  background-color: #333; 
-  color: white; 
-  text-align: center; 
-  padding: 20px; 
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 20px;
 }
 
 .small-image {
   max-width: 500px;
-  margin-top: 10px; 
-  display: block; 
-  margin-left: auto; 
+  margin-top: 10px;
+  display: block;
+  margin-left: auto;
   margin-right: auto;
 }
 
 .small-text {
   margin-top: 10px;
   text-align: right;
-  font-size: 12px; 
+  font-size: 12px;
 }
-
 
 .card-container {
   display: flex;
@@ -204,20 +208,17 @@ li {
   padding: 20px;
   margin: 10px;
   text-align: center;
-  max-width: 250px; 
+  max-width: 250px;
   border-color: #16c1c8;
 }
 
 .card img {
-  max-width: 100px; 
-  margin-top: 10px; 
-  display: block; 
-  margin-left: auto; 
+  max-width: 100px;
+  margin-top: 10px;
+  display: block;
+  margin-left: auto;
   margin-right: auto;
 }
-
-
-
 
 .two-columns {
   display: flexbox;
@@ -230,7 +231,7 @@ li {
 
 .column {
   flex: 1;
-  max-width: 48%; 
+  max-width: 48%;
   margin-bottom: 20px;
 }
 
@@ -239,20 +240,16 @@ li {
   height: auto;
 }
 
-
-.a-footer{
-    
+.a-footer {
   color: #fff;
   text-decoration: none;
-  font-weight: 200;  
+  font-weight: 200;
   font-size: 15px;
 }
 
-.a-footer:hover{
+.a-footer:hover {
   color: #16c1c8;
 }
-
-
 
 form {
   max-width: 600px;
@@ -263,13 +260,10 @@ form {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-
-
 input, textarea {
   width: 100%;
   padding: 8px;
   margin-bottom: 16px;
-  /* box-sizing: border-box; */
 }
 
 button {
@@ -281,7 +275,7 @@ button {
   cursor: pointer;
 }
 
-.logo-pic{
+.logo-pic {
   max-width: 10%;
   height: auto;
   display: block;

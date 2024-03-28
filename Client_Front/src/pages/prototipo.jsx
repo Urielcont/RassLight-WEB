@@ -50,23 +50,28 @@ function Prototipo() {
                 </div>
             </div>
 
-
-            <div className="two-columns">
-                <div className="column">
-                    <img src={Sensor} alt="Image 1" className="image" />
-                    <p>Información sobre Image 1</p>
+    <h2 className='text-black font-semibold text-3xl ml-5 mt-5'>Componentes</h2>
+            <div className="grid place-items-center grid-cols-2 mx-48">
+                <div className="content-center">
+                    <img src={Sensor1} alt="Image 1" className="h-auto max-w-80" />
                 </div>
-                <div className="column">
-                    <p>Información sobre Image 2</p>
-                    <img src={Sensor} alt="Image 2" className="image" />
+                <div className=''>
+                    <h1 className='font-bold text-xl'>PH</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis nostrum dolores doloremque, sunt at tenetur. Aspernatur nesciunt assumenda, saepe, facilis repudiandae perspiciatis veniam commodi, quos modi sit deserunt a voluptas?</p>
                 </div>
-                <div className="column">
-                    <img src={Sensor} alt="Image 3" className="image" />
-                    <p>Información sobre Image 3</p>
+                <div className=''>
+                    <h1 className='font-bold text-xl'>Flujo</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis nostrum dolores doloremque, sunt at tenetur. Aspernatur nesciunt assumenda, saepe, facilis repudiandae perspiciatis veniam commodi, quos modi sit deserunt a voluptas?</p>
                 </div>
-                <div className="column">
-                    <p>Información sobre Image 4</p>
-                    <img src={Sensor} alt="Image 4" className="image" />
+                <div className="content-center items-center">
+                    <img src={Sensor2} alt="Image 2" className="h-auto max-w-80" />
+                </div>
+                <div className="justify-center">
+                    <img src={Sensor3} alt="Image 3" className="h-auto max-w-80" />
+                </div>
+                <div className=''>
+                    <h1 className='font-bold text-xl'>Turbidez</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis nostrum dolores doloremque, sunt at tenetur. Aspernatur nesciunt assumenda, saepe, facilis repudiandae perspiciatis veniam commodi, quos modi sit deserunt a voluptas?</p>
                 </div>
                 {/* <!-- Agrega más filas según sea necesario --> */}
             </div>

@@ -41,21 +41,21 @@ function Index() {
       </div>
 
       {/* <!-- Informacion sobre nosotros como empresa --> */}
-      <div className="acerca-de-Nosotros">
-        <div className="text-content">
-          <h2>Sobre Nosotros</h2>
-          <p>En esta página, nos gustaría compartir un poco más sobre quiénes somos, nuestra pasión por la innovación y cómo nos esforzamos por ofrecer soluciones de vanguardia en el mundo de la tecnología IoT.</p>
+      <div className="acerca-de-Nosotros md:flex">
+        <div className="text-content ">
+          <h2 className='text-center pb-2'>Sobre Nosotros</h2>
+          <p className='text-xs'>En esta página, nos gustaría compartir un poco más sobre quiénes somos, nuestra pasión por la innovación y cómo nos esforzamos por ofrecer soluciones de vanguardia en el mundo de la tecnología IoT.</p>
           <ul>
-            <li>Opcion 1</li>
-            <li>Opcion 2</li>
-            <li>Opcion 3</li>
-
+            <li className='block'>Opcion 1</li>
+            <li className='block'>Opcion 2</li>
+            <li className='block'>Opcion 3</li>
+            {/* Boton para enviar a pagina nosotros */}
             <li><a className="button-image2" href="">Ver Más</a></li>
           </ul>
 
         </div>
 
-        <img src={DesarrolloWeb} className="img-sobrenosotros" alt="No se encontró la imagen" />
+        <img src={DesarrolloWeb} className="img-sobrenosotros " alt="No se encontró la imagen" />
       </div>
       <Footer></Footer>
     </div>
