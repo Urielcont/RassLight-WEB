@@ -3,6 +3,9 @@
 // Importar los estilos
 import '../css/style-index.css'
 import '../css/nosotros.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+
 // Importar las imagenes a autilizar
 import Sensor from '../assets/images/sensor.jpeg'
 import Sensor1 from '../assets/images/ph.png'
@@ -17,17 +20,63 @@ import Footer from '../components/footer'
 function Prototipo() {
     return (
         <div>
-            {/* // Codigo Html */}
             {/* Importar Header */}
             <Header></Header>
 
+            {/* Imagen inicial del prototipo */}
             <img src={Iot} className="img-incio-proto" alt="No se encontró la imagen" />
 
+            {/* Seccion para informacion del prototipo  */}
             <div className="bg-black dark-container">
-                <h1>PROTOTIPO</h1>
-                <p>Nuestra última creación es un purificador de agua inteligente diseñado para garantizar la calidad óptima del agua en todo momento. Este innovador dispositivo mide continuamente tres parámetros clave para garantizar la pureza del agua que consumes</p>
-                <img src={Sensor} className="small-image" alt="No se encontró la imagen" />
-                <p className="small-text">Lorem Ipsum Descripcion de cada sensor para que sirve cada uno</p>
+                {/* Titulo de la seccion {*nombre del prototipo*} */}
+                <h1 className='text-white text-4xl mb-1 font- font-bold'>PROTOTIPO</h1>
+                {/* Texto de presentacion del prototipo */}
+                <p className='italic'>Nuestra última creación es un purificador de agua inteligente diseñado para garantizar la calidad óptima del agua en todo momento. Este innovador dispositivo mide continuamente tres parámetros clave para garantizar la pureza del agua que consumes</p>
+
+                {/* Seccion para colocar carrusel e informacion  sacados desde bootstrap*/}
+                <div className='d-flex justify-content-center align-items-center'>
+                <div className='m-4 w-50'> 
+                    <div id="carouselExampleCaptions" className="carousel slide">
+                        <div className="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        </div>
+                        <div className="carousel-inner">
+                            <div className="carousel-item active">
+                                <img src={Sensor} className="d-block w-100 img-fluid" alt="..." /> 
+                                <div className="carousel-caption d-none d-md-block">
+                                    <h5 className='text-black'>Primer Imagen</h5>
+                                    <p className='text-black'>Descripcion acerca de la imagen que se muestra.</p>
+                                </div>
+                            </div>
+                            <div className="carousel-item">
+                                <img src={Sensor} className="d-block w-100 img-fluid" alt="..." />
+                                <div className="carousel-caption d-none d-md-block">
+                                    <h5 className='text-black'>Segunda Imagen</h5>
+                                    <p className='text-black'>SDescripcion acerca de la imagen que se muestra.</p>
+                                </div>
+                            </div>
+                            <div className="carousel-item">
+                                <img src={Sensor} className="d-block w-100 img-fluid" alt="..." />
+                                <div className="carousel-caption d-none d-md-block">
+                                    <h5 className='text-black'>Tercera Imagen</h5>
+                                    <p className='text-black'>Descripcion acerca de la imagen que se muestra.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button className="carousel-control-prev success" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span className="visually-hidden">Previous</span>
+                        </button>
+                        <button className="carousel-control-next success" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span className="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div></div>
+
+
 
 
 
@@ -77,9 +126,11 @@ function Prototipo() {
             </div>
             {/* Parte de especificaciones*/}
             <div className='grid place-items-center grid-cols-2  bg-gray-500 h-auto'>
+                {/* GIRD ESPECIFICACIONES */}
                 <div>
-                    <h1 className='text-white'>ESPECIFICACIONES</h1>
+                    <h1 className='text-white font-bold'>ESPECIFICACIONES</h1>
                 </div>
+                {/* GRID PARA LA LISTA DE COMPONENTES */}
                 <div className='mt-6'>
                     <ul className='text-white proto-list' >
                         <li>1</li>
@@ -88,10 +139,12 @@ function Prototipo() {
                         <li>4</li>
                     </ul>
                 </div>
-                <div>
-                    <h1 className='text-white'>DOCUMENTACION</h1>
+                {/* GRID Texto documentacion */}
+                <div className='m-10'>
+                    <h1 className='text-white font-bold '>DOCUMENTACION</h1>
                 </div>
-                <div>
+                {/* GRID PARA LINK DE LA DOCUMENTACION */}
+                <div className='m-10'>
                     <a href="" className='text-blue-200'>Documentacion Oficial</a>
                 </div>
             </div>
