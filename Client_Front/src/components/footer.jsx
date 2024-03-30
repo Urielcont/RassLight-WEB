@@ -10,7 +10,7 @@ function Footer(){
     return(
         <div>
             {/*  footer */}
-      <div className="footer h-auto bg-slate-800 sm:h-80">
+      <div className="footer h-auto bg-slate-800 sm:h-80 select-none">
         {/* Redes sociales */}
         <div className="grid grid-cols-1 sm:grid-cols-4 justify-center bg-orange-100">
           {/* Facebook */}
