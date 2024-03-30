@@ -1,6 +1,5 @@
 /* Estilos general para la página index */
-* {
-}
+* {}
 
 /* Estilos para el body */
 .body {
@@ -113,7 +112,8 @@ header {
 .img-servicios {
   width: 30%;
   display: inline-block;
-  margin-left: 2%; /* Adjust the margin as needed */
+  margin-left: 2%;
+  /* Adjust the margin as needed */
 }
 
 .acerca-de-Nosotros {
@@ -145,7 +145,7 @@ header {
 
 .text-content li {
   margin-bottom: 5px;
-  
+
 }
 
 /* .img-sobrenosotros {
@@ -257,7 +257,8 @@ form {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-input, textarea {
+input,
+textarea {
   width: 100%;
   padding: 8px;
   margin-bottom: 16px;
@@ -279,13 +280,32 @@ button {
   margin: 20px auto;
 }
 
+/* Estilo index.jsx seccion del prototipo */
+.bg-imagen {
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.7),
+    rgba(0, 0, 0, 0.7)
+   ),   url('../assets/images/Software.jpg');
+  /* background-size: cover;
+  background-repeat: no-repeat;
+  filter: grayscale(.3) opacity(90%) blur(1px) brightness(.3);
+  height: 200px;
+  z-index: 1; */
+}
+
+/* Estilñ del contenido encima delbg */
+.proto-content {
+  z-index: 2;
+}
 
 /* Estilos del carrousel */
 
 /* darle color a la lista de prototipo */
-.proto-list{
+.proto-list {
   list-style-type: circle;
 }
+
 .proto-list li:before {
   background: green;
 }

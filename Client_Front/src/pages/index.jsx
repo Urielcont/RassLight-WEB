@@ -57,6 +57,38 @@ function Index() {
 
         <img src={DesarrolloWeb} className="img-sobrenosotros " alt="No se encontró la imagen" />
       </div>
+
+      {/* Contenido acerca del Prototipo */}
+
+        <div className='bg-imagen'>
+          <h1 className='text-white text-4xl text-center p-10 max-sm:text-2x1'>PROTOTIPO</h1>
+          {/* Grid para contenido */}
+          <div className='text-white grid grid-cols-3 place-items-center gap-y-16'>
+            <div className='row-span-3 '>
+              <img className='w-96 h-auto' src={Nube} alt="No se encontro la imagen" />
+            </div>
+            <div className=''>
+              <h1 className='font-semibold text-center text-2xl max-sm:text-base'>Caracteristca 1</h1>
+              <p className='italic text-sm text-neutral-300 max-sm:text-sm p-2'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem dolor alias beatae dignissimos tempora earum eos esse numquam nisi. Totam eum tempore dolor laudantium, eius vitae molestias ex ipsa nisi.</p>
+            </div>
+            <div>
+              <h1 className='font-semibold text-center text-2xl max-sm:text-base'>Caracteristca 2</h1>
+              <p className='italic text-sm text-neutral-300 max-sm:text-sm p-2'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem dolor alias beatae dignissimos tempora earum eos esse numquam nisi. Totam eum tempore dolor laudantium, eius vitae molestias ex ipsa nisi.</p>
+            </div>
+            <div>
+              <h1 className='font-semibold text-center text-2xl max-sm:text-base'>Caracteristca 3</h1>
+              <p className='italic text-sm text-neutral-300 max-sm:text-sm p-2'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem dolor alias beatae dignissimos tempora earum eos esse numquam nisi. Totam eum tempore dolor laudantium, eius vitae molestias ex ipsa nisi.</p>
+            </div>
+            <div>
+              <h1 className='font-semibold text-center text-2xl max-sm:text-base'>Caracteristca 4</h1>
+              <p className='italic text-sm text-neutral-300 max-sm:text-sm p-2'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem dolor alias beatae dignissimos tempora earum eos esse numquam nisi. Totam eum tempore dolor laudantium, eius vitae molestias ex ipsa nisi.</p>
+            </div>
+          </div>
+        </div>
+
+      
+
+      {/* Componente Footer */}
       <Footer></Footer>
     </div>
 
