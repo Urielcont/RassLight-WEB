@@ -19,10 +19,11 @@ function Principal() {
 
   useEffect(() => {
     // Filtrar los mensajes basados en el término de búsqueda
-    const filtered = messages.filter((message) =>
-      message.nombres.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      message.correo.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      message.mensaje.toLowerCase().includes(searchTerm.toLowerCase())
+    const filtered = messages.filter(
+      (message) =>
+        message.nombres.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        message.correo.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        message.mensaje.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     // Ordenar los mensajes según el criterio seleccionado
@@ -51,21 +52,21 @@ function Principal() {
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
-  
+
     // Obtener los componentes de la fecha
     const day = date.getDate();
     const month = date.getMonth() + 1; // Los meses van de 0 a 11, por lo que se suma 1
     const year = date.getFullYear();
     const hours = date.getHours();
     const minutes = date.getMinutes();
-  
+
     // Agregar ceros a la izquierda si es necesario para tener dos dígitos en el día y el mes
-    const formattedDay = day < 10 ? '0' + day : day;
-    const formattedMonth = month < 10 ? '0' + month : month;
-  
+    const formattedDay = day < 10 ? "0" + day : day;
+    const formattedMonth = month < 10 ? "0" + month : month;
+
     // Construir la cadena de fecha formateada
     const formattedDate = `${formattedDay}-${formattedMonth}-${year} ${hours}:${minutes}`;
-  
+
     return formattedDate;
   };
 
@@ -74,16 +75,27 @@ function Principal() {
     <div>
       <header className="bg-cyan-500 p-6 text-white flex items-center">
         <img className="w-20 start-0" src={logo} alt="Logo"></img>
-        <h1 className="text-3xl font-bold text-center m-auto text-black place-items-center">
+        <h1 className="text-3xl font-bold text-center m-auto text-black ">
           Sistema de Administración
         </h1>
         <Link className="text-1xl text-black text-end" onClick={logout} to="/">
           Salir
         </Link>
       </header>
-  
+
       {/* Contenido Principal */}
       <div>
+        <div className="flex text-center items-center">
+          <div className="text-black basis-4/12 h-12 bg-cyan-200 items-center hover:bg-cyan-500">
+            <Link to="/principal" className="flex justify-center mt-2 ml-auto w-auto h-5/6 mr-auto">Principal</Link>
+          </div>
+          <div className="text-white basis-4/12 h-12 bg-cyan-800 hover:bg-cyan-500">
+            <Link to="/pendientes" className="flex justify-center mt-2 ml-auto w-auto h-5/6 mr-auto">Pendientes</Link>
+          </div>
+          <div className="text-black basis-4/12 h-12 bg-cyan-500 hover:bg-cyan-200">
+            <Link to="/respondidos" className="flex justify-center mt-2 ml-auto w-auto h-5/6 mr-auto">Respondidos</Link>
+          </div>
+        </div>
         <div className="rounded-md my-4 mx-auto w-1/2">
           <input
             type="text"
@@ -93,7 +105,7 @@ function Principal() {
             className="w-full border-gray-300 rounded-md shadow-sm focus:border-cyan-500 focus:ring focus:ring-cyan-500 focus:ring-opacity-50"
           />
         </div>
-  
+
         {/* Selector de orden */}
         <div className="rounded-md my-4 mx-auto w-1/2">
           <select
@@ -107,7 +119,7 @@ function Principal() {
             <option value="z-a">Filtrar por nombre: Z-A</option>
           </select>
         </div>
-  
+
         {/* Tabla de Contenido */}
         <div className="rounded-md justify-center items-center my-32 w-12/12 hover:table-fixed">
           <table className="min-w-full bg-white table-auto">
@@ -122,7 +134,9 @@ function Principal() {
             <tbody className="text-stone-600 text-center">
               {filteredMessages.length === 0 ? (
                 <tr>
-                  <td colSpan="4" className="py-2 px-4">No hay mensajes</td>
+                  <td colSpan="4" className="py-2 px-4">
+                    No hay mensajes
+                  </td>
                 </tr>
               ) : (
                 filteredMessages.map((message) => (
@@ -139,6 +153,8 @@ function Principal() {
         </div>
       </div>
     </div>
+
+    
   );
 }
 
