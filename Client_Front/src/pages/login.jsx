@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 // Importar las imagenes a utilizar
 import Logo from "../assets/images/logo.png";
+import Swal from 'sweetalert2';
 
 import "../css/login.css";
 
@@ -25,6 +26,12 @@ function Loginpage() {
   useEffect(() => {
     if (isAuthenticated) {
       navigate("/principal");
+      Swal.fire({
+        icon: 'success',
+        title: '¡Inicio de sesión exitoso!',
+        text: 'Bienvenido de vuelta',
+        
+      });
     }
   }, [isAuthenticated, navigate]);
 

@@ -5,6 +5,8 @@ import "../css/style-index.css";
 // Importar imagenes
 import Logo from "../assets/images/logo.png";
 import { useMessage } from "../context/MessageContext.jsx";
+import Swal from 'sweetalert2';
+// import { useHistory } from "react-router-dom";
 
 // Importar Componentes
 import Header from "../components/header.jsx";
@@ -14,11 +16,21 @@ function Contactanos() {
   const { register, handleSubmit, formState: { errors }} = useForm();
 const correoError = errors.correo;
 
+  // const history = useHistory()
   const { createMessage } = useMessage();
   const [formCompleted, setFormCompleted] = useState(false);
 
   const onSubmit = handleSubmit((data) => {
     createMessage(data);
+    Swal.fire({
+      title: 'Mensaje enviado',
+      text: 'Gracias por ponerte en contacto con nosotros',
+      icon: 'success',
+      confirmButtonText: 'Cerrar'
+    }).then(() => {
+      // Redireccionar al usuario después de cerrar el SweetAlert
+      window.location.href = '/';
+    });
   });
 
    // Función para verificar si los campos están completos

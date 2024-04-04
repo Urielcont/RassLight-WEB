@@ -4,8 +4,11 @@ import logo from "../assets/images/logo.png";
 import { Link } from "react-router-dom";
 import { useMessage } from "../context/MessageContext";
 import { useAuth } from "../context/authContext";
+import Swal from 'sweetalert2';
+import { useNavigate } from "react-router-dom";
 
 function Principal() {
+  const navigate = useNavigate();
   const { getMessages, messages } = useMessage();
   const { logout } = useAuth();
   const [searchTerm, setSearchTerm] = useState("");
@@ -17,12 +20,29 @@ function Principal() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const handleLogout = () => {
+    Swal.fire({
+      title: 'Seguro de salir?',
+      text: "Estás a punto de cerrar sesión",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si',
+      cancelButtonText: 'No'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Realizar logout si se confirma
+        logout();
+        navigate('/');
+      }
+    });
+  };
+
   useEffect(() => {
     // Filtrar los mensajes basados en el término de búsqueda
     const filtered = messages.filter(
       (message) =>
-        message.nombres.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        message.correo.toLowerCase().includes(searchTerm.toLowerCase()) ||
         message.mensaje.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
@@ -78,7 +98,10 @@ function Principal() {
         <h1 className="text-3xl font-bold text-center m-auto text-black ">
           Sistema de Administración
         </h1>
-        <Link className="text-1xl text-black text-end" onClick={logout} to="/">
+        <Link
+          className="inline-block bg-red-800 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
+          onClick={handleLogout}
+        >
           Salir
         </Link>
       </header>
@@ -87,13 +110,28 @@ function Principal() {
       <div>
         <div className="flex text-center items-center">
           <div className="text-black basis-4/12 h-12 bg-cyan-200 items-center hover:bg-cyan-500">
-            <Link to="/Principal" className="flex justify-center mt-2 ml-auto w-auto h-5/6 mr-auto">Principal</Link>
+            <Link
+              to="/Principal"
+              className="flex justify-center mt-2 ml-auto w-auto h-5/6 mr-auto"
+            >
+              Principal
+            </Link>
           </div>
           <div className="text-white basis-4/12 h-12 bg-cyan-800 hover:bg-cyan-500">
-            <Link to="/Pendientes" className="flex justify-center mt-2 ml-auto w-auto h-5/6 mr-auto">Pendientes</Link>
+            <Link
+              to="/Pendientes"
+              className="flex justify-center mt-2 ml-auto w-auto h-5/6 mr-auto"
+            >
+              Pendientes
+            </Link>
           </div>
           <div className="text-black basis-4/12 h-12 bg-cyan-500 hover:bg-cyan-200">
-            <Link to="/Respondidos" className="flex justify-center mt-2 ml-auto w-auto h-5/6 mr-auto">Respondidos</Link>
+            <Link
+              to="/Respondidos"
+              className="flex justify-center mt-2 ml-auto w-auto h-5/6 mr-auto"
+            >
+              Respondidos
+            </Link>
           </div>
         </div>
         <div className="rounded-md my-4 mx-auto w-1/2">
@@ -153,8 +191,6 @@ function Principal() {
         </div>
       </div>
     </div>
-
-    
   );
 }
 
