@@ -87,13 +87,13 @@ function Principal() {
       <div>
         <div className="flex text-center items-center">
           <div className="text-black basis-4/12 h-12 bg-cyan-200 items-center hover:bg-cyan-500">
-            <Link to="/principal" className="flex justify-center mt-2 ml-auto w-auto h-5/6 mr-auto">Principal</Link>
+            <Link to="/Principal" className="flex justify-center mt-2 ml-auto w-auto h-5/6 mr-auto">Principal</Link>
           </div>
           <div className="text-white basis-4/12 h-12 bg-cyan-800 hover:bg-cyan-500">
-            <Link to="/pendientes" className="flex justify-center mt-2 ml-auto w-auto h-5/6 mr-auto">Pendientes</Link>
+            <Link to="/Pendientes" className="flex justify-center mt-2 ml-auto w-auto h-5/6 mr-auto">Pendientes</Link>
           </div>
           <div className="text-black basis-4/12 h-12 bg-cyan-500 hover:bg-cyan-200">
-            <Link to="/respondidos" className="flex justify-center mt-2 ml-auto w-auto h-5/6 mr-auto">Respondidos</Link>
+            <Link to="/Respondidos" className="flex justify-center mt-2 ml-auto w-auto h-5/6 mr-auto">Respondidos</Link>
           </div>
         </div>
         <div className="rounded-md my-4 mx-auto w-1/2">

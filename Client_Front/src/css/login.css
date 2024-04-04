@@ -16,3 +16,9 @@ button[type="button"] {
     background-color: #26ADE4;
     color: white;
 }
+
+.disabled-button {
+    background-color: #A0AEC0 !important; /* Color gris */
+    cursor: not-allowed; /* Cambiar el cursor cuando está deshabilitado */
+  }
+  

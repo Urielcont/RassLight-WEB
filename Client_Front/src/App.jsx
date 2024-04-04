@@ -2,11 +2,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./context/authContext.jsx";
 import Loginpage from "./pages/login";
-import Principal from "./pages/principal";
-import Index from "./pages/index";
-import Prototipo from "./pages/prototipo";
-import SobreNosotros from "./pages/SobreNosotros";
-import Contactanos from "./pages/contactanos";
+import Prototipo from "./pages/prototipo.jsx";
+import Index from "./pages/index.jsx";
+import SobreNosotros  from "./pages/SobreNosotros.jsx";
+import Contactanos from "./pages/contactanos.jsx";
+import Principal from "./pages/principal.jsx";
 
 import ProtectedRoute from "./protectedRoute.jsx";
 import { MessageProvider } from "./context/MessageContext.jsx";

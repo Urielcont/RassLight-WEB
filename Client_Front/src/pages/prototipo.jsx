@@ -17,6 +17,7 @@ import Iot from '../assets/images/Iot.jpg'
 // Importar Componentes
 import Header from '../components/header'
 import Footer from '../components/footer'
+
 function Prototipo() {
     return (
         <div>

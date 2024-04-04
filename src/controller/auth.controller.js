@@ -57,7 +57,8 @@ export const sendMessage = async (req, res) => {
       nombres,
       correo,
       mensaje,
-      fecha: new Date()
+      fecha: new Date(),
+      activo: true
     });
 
     await newMessage.save();
@@ -73,7 +74,7 @@ export const sendMessage = async (req, res) => {
 export const getMessages = async (req, res) => {
   try {
     // Utiliza el método find para obtener todos los mensajes
-    const messages = await Message.find();
+    const messages = await Message.find({ activo: true });
 
     console.log(messages)
 

@@ -21,6 +21,10 @@ const messageSchema = new mongoose.Schema({
     },
     fecha: {
         type: Date
+    },
+    activo: {
+        type: Boolean,
+        default: true
     }
 });
 
