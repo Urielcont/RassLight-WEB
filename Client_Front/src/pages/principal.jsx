@@ -58,7 +58,9 @@ function Principal() {
           )
         : messages.filter(
             (message) =>
-              message.mensaje.toLowerCase().includes(searchTerm.toLowerCase()) &&
+              message.mensaje
+                .toLowerCase()
+                .includes(searchTerm.toLowerCase()) &&
               message.estado === selectedSection
           );
 
@@ -125,7 +127,9 @@ function Principal() {
           <button
             className={`${
               selectedSection === "todos" ? "bg-blue-500" : "bg-gray-300"
-            } text-white font-bold py-2 px-4 rounded basis-4/12`}
+            } text-white font-bold py-2 px-4 ${
+              selectedSection === "todos" ? "" : "m-2"
+            } basis-4/12`}
             onClick={() => handleSectionChange("todos")}
           >
             Principal
@@ -133,7 +137,9 @@ function Principal() {
           <button
             className={`${
               selectedSection === "activo" ? "bg-blue-500" : "bg-gray-300"
-            } text-white font-bold py-2 px-4 rounded basis-4/12`}
+            } text-white font-bold py-2 px-4 ${
+              selectedSection === "activo" ? "" : "m-2"
+            } basis-4/12`}
             onClick={() => handleSectionChange("activo")}
           >
             Activos
@@ -141,7 +147,9 @@ function Principal() {
           <button
             className={`${
               selectedSection === "pendiente" ? "bg-blue-500" : "bg-gray-300"
-            } text-white font-bold py-2 px-4 rounded basis-4/12`}
+            } text-white font-bold py-2 px-4 ${
+              selectedSection === "pendiente" ? "" : "m-2"
+            } basis-4/12`}
             onClick={() => handleSectionChange("pendiente")}
           >
             Pendientes
@@ -149,13 +157,14 @@ function Principal() {
           <button
             className={`${
               selectedSection === "terminado" ? "bg-blue-500" : "bg-gray-300"
-            } text-white font-bold py-2 px-4 rounded basis-4/12`}
+            } text-white font-bold py-2 px-4 ${
+              selectedSection === "terminado" ? "" : "m-2"
+            } basis-4/12`}
             onClick={() => handleSectionChange("terminado")}
           >
             Terminados
           </button>
         </div>
-
         <div className="rounded-md my-4 mx-auto w-1/2">
           <input
             type="text"
