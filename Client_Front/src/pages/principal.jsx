@@ -5,6 +5,7 @@ import { useMessage } from "../context/MessageContext";
 import { useAuth } from "../context/authContext";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import Modal from "../components/modal.jsx"
 
 function Principal() {
   const navigate = useNavigate();
@@ -186,6 +187,8 @@ function Principal() {
             <option value="a-z">Filtrar por nombre: A-Z</option>
             <option value="z-a">Filtrar por nombre: Z-A</option>
           </select>
+
+          <Modal></Modal>
         </div>
 
         {/* Tabla de Contenido */}

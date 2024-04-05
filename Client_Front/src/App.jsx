@@ -10,8 +10,6 @@ import Principal from "./pages/principal.jsx";
 
 import ProtectedRoute from "./protectedRoute.jsx";
 import { MessageProvider } from "./context/MessageContext.jsx";
-import PendientesPage from "./components/pendientes.jsx";
-import RespondidosPage from "./components/respondidos.jsx";
 
 function App() {
   return (
@@ -27,8 +25,6 @@ function App() {
             <Route path="/login" element={<Loginpage />}></Route>
             <Route element={<ProtectedRoute />}>
               <Route path="/Principal" element={<Principal />}></Route>
-              <Route path="/respondidos" element={<RespondidosPage />}></Route>
-              <Route path="/pendientes" element={<PendientesPage />}></Route>
             </Route>
           </Routes>
         </MessageProvider>
