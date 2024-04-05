@@ -1,10 +1,9 @@
-// Pagina principal para mostrar datos del usuario
 import { useEffect, useState } from "react";
 import logo from "../assets/images/logo.png";
 import { Link } from "react-router-dom";
 import { useMessage } from "../context/MessageContext";
 import { useAuth } from "../context/authContext";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
 function Principal() {
@@ -14,53 +13,29 @@ function Principal() {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredMessages, setFilteredMessages] = useState([]);
   const [sortOrder, setSortOrder] = useState("reciente");
+  const [selectedSection, setSelectedSection] = useState("todos"); // Estado inicial: Todos los mensajes
 
   useEffect(() => {
     getMessages();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [getMessages]);
 
   const handleLogout = () => {
     Swal.fire({
-      title: 'Seguro de salir?',
+      title: "Seguro de salir?",
       text: "Estás a punto de cerrar sesión",
-      icon: 'warning',
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Si',
-      cancelButtonText: 'No'
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Si",
+      cancelButtonText: "No",
     }).then((result) => {
       if (result.isConfirmed) {
-        // Realizar logout si se confirma
         logout();
-        navigate('/');
+        navigate("/");
       }
     });
   };
-
-  useEffect(() => {
-    // Filtrar los mensajes basados en el término de búsqueda
-    const filtered = messages.filter(
-      (message) =>
-        message.mensaje.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-
-    // Ordenar los mensajes según el criterio seleccionado
-    const sorted = [...filtered].sort((a, b) => {
-      if (sortOrder === "reciente") {
-        return new Date(b.fecha).getTime() - new Date(a.fecha).getTime(); // Ordenar de más reciente a más antiguo
-      } else if (sortOrder === "viejo") {
-        return new Date(a.fecha).getTime() - new Date(b.fecha).getTime(); // Ordenar de más antiguo a más reciente
-      } else if (sortOrder === "a-z") {
-        return a.nombres.localeCompare(b.nombres); // Ordenar alfabéticamente de A-Z
-      } else if (sortOrder === "z-a") {
-        return b.nombres.localeCompare(a.nombres); // Ordenar alfabéticamente de Z-A
-      }
-    });
-
-    setFilteredMessages(sorted);
-  }, [messages, searchTerm, sortOrder]);
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
@@ -70,28 +45,66 @@ function Principal() {
     setSortOrder(event.target.value);
   };
 
+  const handleSectionChange = (section) => {
+    setSelectedSection(section);
+  };
+
+  useEffect(() => {
+    // Filtrar los mensajes según la sección seleccionada
+    const filtered =
+      selectedSection === "todos"
+        ? messages.filter((message) =>
+            message.mensaje.toLowerCase().includes(searchTerm.toLowerCase())
+          )
+        : messages.filter(
+            (message) =>
+              message.mensaje.toLowerCase().includes(searchTerm.toLowerCase()) &&
+              message.estado === selectedSection
+          );
+
+    // Ordenar los mensajes según el criterio seleccionado
+    const sorted = [...filtered].sort((a, b) => {
+      if (sortOrder === "reciente") {
+        return new Date(b.fecha).getTime() - new Date(a.fecha).getTime();
+      } else if (sortOrder === "viejo") {
+        return new Date(a.fecha).getTime() - new Date(b.fecha).getTime();
+      } else if (sortOrder === "a-z") {
+        return a.nombres.localeCompare(b.nombres);
+      } else if (sortOrder === "z-a") {
+        return b.nombres.localeCompare(a.nombres);
+      }
+    });
+
+    setFilteredMessages(sorted);
+  }, [messages, searchTerm, sortOrder, selectedSection]);
+
   const formatDate = (dateString) => {
     const date = new Date(dateString);
-
-    // Obtener los componentes de la fecha
     const day = date.getDate();
-    const month = date.getMonth() + 1; // Los meses van de 0 a 11, por lo que se suma 1
+    const month = date.getMonth() + 1;
     const year = date.getFullYear();
     const hours = date.getHours();
     const minutes = date.getMinutes();
-
-    // Agregar ceros a la izquierda si es necesario para tener dos dígitos en el día y el mes
     const formattedDay = day < 10 ? "0" + day : day;
     const formattedMonth = month < 10 ? "0" + month : month;
-
-    // Construir la cadena de fecha formateada
     const formattedDate = `${formattedDay}-${formattedMonth}-${year} ${hours}:${minutes}`;
-
     return formattedDate;
   };
 
+  function getStatusColor(estado) {
+    switch (estado) {
+      case "activo":
+        return "blue";
+      case "pendiente":
+        return "orange";
+      case "terminado":
+        return "red";
+      default:
+        return "gray";
+    }
+  }
+
   return (
-    // Encabezado de la Página Principal de Administración
     <div>
       <header className="bg-cyan-500 p-6 text-white flex items-center">
         <img className="w-20 start-0" src={logo} alt="Logo"></img>
@@ -106,34 +119,43 @@ function Principal() {
         </Link>
       </header>
 
-      {/* Contenido Principal */}
       <div>
-        <div className="flex text-center items-center">
-          <div className="text-black basis-4/12 h-12 bg-cyan-200 items-center hover:bg-cyan-500">
-            <Link
-              to="/Principal"
-              className="flex justify-center mt-2 ml-auto w-auto h-5/6 mr-auto"
-            >
-              Principal
-            </Link>
-          </div>
-          <div className="text-white basis-4/12 h-12 bg-cyan-800 hover:bg-cyan-500">
-            <Link
-              to="/Pendientes"
-              className="flex justify-center mt-2 ml-auto w-auto h-5/6 mr-auto"
-            >
-              Pendientes
-            </Link>
-          </div>
-          <div className="text-black basis-4/12 h-12 bg-cyan-500 hover:bg-cyan-200">
-            <Link
-              to="/Respondidos"
-              className="flex justify-center mt-2 ml-auto w-auto h-5/6 mr-auto"
-            >
-              Respondidos
-            </Link>
-          </div>
+        {/* Agregar botones para cambiar la sección */}
+        <div className="flex justify-around mb-4">
+          <button
+            className={`${
+              selectedSection === "todos" ? "bg-blue-500" : "bg-gray-300"
+            } text-white font-bold py-2 px-4 rounded basis-4/12`}
+            onClick={() => handleSectionChange("todos")}
+          >
+            Principal
+          </button>
+          <button
+            className={`${
+              selectedSection === "activo" ? "bg-blue-500" : "bg-gray-300"
+            } text-white font-bold py-2 px-4 rounded basis-4/12`}
+            onClick={() => handleSectionChange("activo")}
+          >
+            Activos
+          </button>
+          <button
+            className={`${
+              selectedSection === "pendiente" ? "bg-blue-500" : "bg-gray-300"
+            } text-white font-bold py-2 px-4 rounded basis-4/12`}
+            onClick={() => handleSectionChange("pendiente")}
+          >
+            Pendientes
+          </button>
+          <button
+            className={`${
+              selectedSection === "terminado" ? "bg-blue-500" : "bg-gray-300"
+            } text-white font-bold py-2 px-4 rounded basis-4/12`}
+            onClick={() => handleSectionChange("terminado")}
+          >
+            Terminados
+          </button>
         </div>
+
         <div className="rounded-md my-4 mx-auto w-1/2">
           <input
             type="text"
@@ -144,7 +166,6 @@ function Principal() {
           />
         </div>
 
-        {/* Selector de orden */}
         <div className="rounded-md my-4 mx-auto w-1/2">
           <select
             value={sortOrder}
@@ -159,35 +180,48 @@ function Principal() {
         </div>
 
         {/* Tabla de Contenido */}
-        <div className="rounded-md justify-center items-center my-32 w-12/12 hover:table-fixed">
-          <table className="min-w-full bg-white table-auto">
-            <thead className="bg-gray-200 text-neutral-900">
-              <tr className="text-center">
-                <th className="py-1 px-2">Nombre Completo</th>
-                <th className="py-1 px-4">Correo Electrónico</th>
-                <th className="py-2 px-4">Mensaje</th>
-                <th className="py-2 px-4">Fecha</th>
-              </tr>
-            </thead>
-            <tbody className="text-stone-600 text-center">
-              {filteredMessages.length === 0 ? (
-                <tr>
-                  <td colSpan="4" className="py-2 px-4">
-                    No hay mensajes
-                  </td>
-                </tr>
-              ) : (
-                filteredMessages.map((message) => (
-                  <tr key={message.id} className="text-focus">
-                    <td className="py-2 px-4">{message.nombres}</td>
-                    <td className="py-2 px-4">{message.correo}</td>
-                    <td className="py-2 px-4">{message.mensaje}</td>
-                    <td className="py-2 px-4">{formatDate(message.fecha)}</td>
-                  </tr>
-                ))
-              )}
-            </tbody>
-          </table>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-5">
+          {filteredMessages.length === 0 ? (
+            <div className="text-center text-gray-600 col-span-full">
+              No hay mensajes
+            </div>
+          ) : (
+            filteredMessages.map((message) => (
+              <div
+                key={message.id}
+                className="bg-cyan-50 rounded-lg shadow-md overflow-hidden relative m-3"
+              >
+                <div className="flex-grow p-4">
+                  <h3 className="text-lg font-semibold mb-2">
+                    {message.nombres}
+                  </h3>
+                  <p className="text-sm text-gray-600 mb-1">
+                    <strong>Correo:</strong> {message.correo}
+                  </p>
+                  <p className="text-sm text-gray-600 mb-1">
+                    <strong>Mensaje:</strong>{" "}
+                    {message.mensaje.length > 20
+                      ? `${message.mensaje.substring(0, 20)}...`
+                      : message.mensaje}
+                    {message.mensaje.length > 20 && (
+                      <button className="text-blue-500">Ver más</button>
+                    )}
+                  </p>
+                  <p className="text-sm text-gray-600 mb-1">
+                    <strong>Fecha:</strong> {formatDate(message.fecha)}
+                  </p>
+                  <div
+                    className={`bg-${getStatusColor(
+                      message.estado
+                    )}-500 absolute w-3 right-0 bottom-0 h-48`}
+                  />
+                </div>
+                <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-2 rounded absolute bottom-2 right-10 text-xs">
+                  Responder
+                </button>
+              </div>
+            ))
+          )}
         </div>
       </div>
     </div>

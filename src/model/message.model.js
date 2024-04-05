@@ -22,9 +22,10 @@ const messageSchema = new mongoose.Schema({
     fecha: {
         type: Date
     },
-    activo: {
-        type: Boolean,
-        default: true
+    estado: {
+        type: String,
+        enum: ["activo", "pendiente", "terminado"],
+        default: "activo"
     }
 });
 

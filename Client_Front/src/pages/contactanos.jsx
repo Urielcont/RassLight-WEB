@@ -100,7 +100,7 @@ const correoError = errors.correo;
                   : "disabled-button"
               }`}
             >
-              Ingresar
+              Enviar
             </button>
         </div>
       </form>
