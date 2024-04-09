@@ -5,7 +5,21 @@ import { useMessage } from "../context/MessageContext";
 import { useAuth } from "../context/authContext";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
-import Modal from "../components/modal.jsx"
+import Modal from "../components/modalMessage.jsx";
+
+// eslint-disable-next-line react-refresh/only-export-components
+export const formatDate = (dateString) => {
+  const date = new Date(dateString);
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  const year = date.getFullYear();
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+  const formattedDay = day < 10 ? "0" + day : day;
+  const formattedMonth = month < 10 ? "0" + month : month;
+  const formattedDate = `${formattedDay}-${formattedMonth}-${year} ${hours}:${minutes}`;
+  return formattedDate;
+};
 
 function Principal() {
   const navigate = useNavigate();
@@ -14,12 +28,14 @@ function Principal() {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredMessages, setFilteredMessages] = useState([]);
   const [sortOrder, setSortOrder] = useState("reciente");
-  const [selectedSection, setSelectedSection] = useState("todos"); // Estado inicial: Todos los mensajes
+  const [selectedSection, setSelectedSection] = useState("todos"); //Para el filtro por estado
+  const [estadoModal, cambiarEstadoModal] = useState(null);
 
   useEffect(() => {
     getMessages();
   }, [getMessages]);
 
+  //Alerta para el logout
   const handleLogout = () => {
     Swal.fire({
       title: "Seguro de salir?",
@@ -50,8 +66,8 @@ function Principal() {
     setSelectedSection(section);
   };
 
+  //Filtro de mensajes
   useEffect(() => {
-    // Filtrar los mensajes según la sección seleccionada
     const filtered =
       selectedSection === "todos"
         ? messages.filter((message) =>
@@ -65,7 +81,7 @@ function Principal() {
               message.estado === selectedSection
           );
 
-    // Ordenar los mensajes según el criterio seleccionado
+    //Dependiendo de la fecha de creacion o por abecedario
     const sorted = [...filtered].sort((a, b) => {
       if (sortOrder === "reciente") {
         return new Date(b.fecha).getTime() - new Date(a.fecha).getTime();
@@ -81,27 +97,15 @@ function Principal() {
     setFilteredMessages(sorted);
   }, [messages, searchTerm, sortOrder, selectedSection]);
 
-  const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    const day = date.getDate();
-    const month = date.getMonth() + 1;
-    const year = date.getFullYear();
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
-    const formattedDay = day < 10 ? "0" + day : day;
-    const formattedMonth = month < 10 ? "0" + month : month;
-    const formattedDate = `${formattedDay}-${formattedMonth}-${year} ${hours}:${minutes}`;
-    return formattedDate;
-  };
-
+  //Funcion para decorar el mensaje dependiendo del estado
   function getStatusColor(estado) {
     switch (estado) {
       case "activo":
         return "blue";
       case "pendiente":
-        return "orange";
-      case "terminado":
         return "red";
+      case "terminado":
+        return "gray";
       default:
         return "gray";
     }
@@ -110,7 +114,7 @@ function Principal() {
   return (
     <div>
       <header className="bg-cyan-500 p-6 text-white flex items-center">
-        <img className="w-20 start-0" src={logo} alt="Logo"></img>
+        <img className="w-20 start-0" src={logo} alt="Logo" />
         <h1 className="text-3xl font-bold text-center m-auto text-black ">
           Sistema de Administración
         </h1>
@@ -123,8 +127,8 @@ function Principal() {
       </header>
 
       <div>
-        {/* Agregar botones para cambiar la sección */}
         <div className="flex justify-around mb-4">
+          {/* Botones para los apartados de mensajes existentes */}
           <button
             className={`${
               selectedSection === "todos" ? "bg-blue-500" : "bg-gray-300"
@@ -135,6 +139,7 @@ function Principal() {
           >
             Principal
           </button>
+          {/* Boton para los mensajes con estado activo */}
           <button
             className={`${
               selectedSection === "activo" ? "bg-blue-500" : "bg-gray-300"
@@ -145,6 +150,7 @@ function Principal() {
           >
             Activos
           </button>
+          {/* Boton para los mensajes con estado pendiente */}
           <button
             className={`${
               selectedSection === "pendiente" ? "bg-blue-500" : "bg-gray-300"
@@ -155,6 +161,7 @@ function Principal() {
           >
             Pendientes
           </button>
+          {/* Boton para los mensajes con estado terminado */}
           <button
             className={`${
               selectedSection === "terminado" ? "bg-blue-500" : "bg-gray-300"
@@ -187,11 +194,8 @@ function Principal() {
             <option value="a-z">Filtrar por nombre: A-Z</option>
             <option value="z-a">Filtrar por nombre: Z-A</option>
           </select>
-
-          <Modal></Modal>
         </div>
 
-        {/* Tabla de Contenido */}
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-5">
           {filteredMessages.length === 0 ? (
             <div className="text-center text-gray-600 col-span-full">
@@ -216,7 +220,12 @@ function Principal() {
                       ? `${message.mensaje.substring(0, 20)}...`
                       : message.mensaje}
                     {message.mensaje.length > 20 && (
-                      <button className="text-blue-500">Ver más</button>
+                      <button
+                        onClick={() => cambiarEstadoModal(message)}
+                        className="text-blue-500"
+                      >
+                        Ver más
+                      </button>
                     )}
                   </p>
                   <p className="text-sm text-gray-600 mb-1">
@@ -228,9 +237,53 @@ function Principal() {
                     )}-500 absolute w-3 right-0 bottom-0 h-48`}
                   />
                 </div>
-                <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-2 rounded absolute bottom-2 right-10 text-xs">
-                  Responder
-                </button>
+                {message.estado !== "terminado" ? (
+                  <button
+                    className={`bg-${getStatusColor(
+                      message.estado
+                    )}-500 hover:bg-${getStatusColor(
+                      message.estado
+                    )}-600 text-white font-bold py-1 px-2 rounded absolute bottom-2 right-10 text-xs`}
+                  >
+                    Responder
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => cambiarEstadoModal(message)}
+                    className={`bg-${getStatusColor(
+                      message.estado
+                    )}-500 hover:bg-${getStatusColor(
+                      message.estado
+                    )}-600 text-white font-bold py-1 px-2 rounded absolute bottom-2 right-10 text-xs`}
+                  >
+                    Ver
+                  </button>
+                )}
+
+                {/* Renderizacion del modal para ver el mensaje completo */}
+                <Modal estado={estadoModal} cambiarEstado={cambiarEstadoModal}>
+                  {estadoModal && ( // Asegura que el estado no sea null antes de renderizar el contenido
+                    <>
+                      <h3 className="text-lg font-semibold mb-2">
+                        {estadoModal.nombres}
+                      </h3>
+                      <p className="text-sm text-gray-600 mb-1">
+                        <strong>Correo:</strong> {estadoModal.correo}
+                      </p>
+                      <p className="text-sm text-gray-600 mb-1">
+                        <strong>Mensaje:</strong> {estadoModal.mensaje}
+                      </p>
+                      <p className="text-sm text-gray-600 mb-1">
+                        <strong>Fecha:</strong> {formatDate(estadoModal.fecha)}
+                      </p>
+                      <div
+                        className={`bg-${getStatusColor(
+                          estadoModal.estado
+                        )}-500 absolute w-100 left-0 top-0 h-4 mb-3`}
+                      />
+                    </>
+                  )}
+                </Modal>
               </div>
             ))
           )}
@@ -239,5 +292,6 @@ function Principal() {
     </div>
   );
 }
+
 
 export default Principal;
