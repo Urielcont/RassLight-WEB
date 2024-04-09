@@ -3,6 +3,8 @@ import Message from "../model/message.model.js";
 import { createAccessToken } from "../libs/jwt.js";
 import { TOKEN_SECRET } from '../config/config.js';
 import jwt from 'jsonwebtoken';
+import Response from "../model/response.model.js";
+import { enviarEmail } from '../services.js';
 
 //funcion para loguearse
 export const login = async (req, res) => {
@@ -70,6 +72,49 @@ export const sendMessage = async (req, res) => {
     res.status(500).json({ message: 'Error interno del servidor' });
   }
 }
+
+// Función para responder a un mensaje y marcarlo como terminado
+export const sendResponse = async (req, res) => {
+  try {
+    // Obtener los datos de la respuesta del cuerpo de la solicitud
+    const { messageId, responseContent } = req.body;
+
+    // Obtener el mensaje correspondiente utilizando el ID
+    const originalMessage = await Message.findById(messageId);
+
+    if (!originalMessage) {
+      return res.status(404).json({ message: "Mensaje no encontrado" });
+    }
+
+    // Actualizar el estado del mensaje original a "terminado" en la base de datos
+    const updatedMessage = await Message.findByIdAndUpdate(
+      messageId,
+      { estado: 'terminado' },
+      { new: true }
+    );
+
+    // Crear un nuevo mensaje para representar la respuesta enviada utilizando el modelo Response
+    const newResponse = new Response({
+      destinatario: originalMessage.correo, // Usar el correo del destinatario del mensaje original
+      messageId: updatedMessage._id, // Establecer el ID del mensaje original
+      content: responseContent,
+      createdAt: new Date()
+    });
+
+    // Guardar la respuesta en la base de datos
+    await newResponse.save();
+
+    // Enviar correo electrónico utilizando la función enviarCorreoRespuesta
+    await enviarEmail(originalMessage.correo, 'Asunto del correo', responseContent);
+
+    // Responder con un mensaje de éxito
+    res.status(200).json({ message: "Respuesta enviada y mensaje original marcado como terminado" });
+
+  } catch (error) {
+    console.error('Error al responder al mensaje:', error);
+    res.status(500).json({ message: 'Error interno del servidor' });
+  }
+};
 
 export const getMessages = async (req, res) => {
   try {

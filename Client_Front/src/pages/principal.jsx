@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useMessage } from "../context/MessageContext";
 import Modal from "../components/modalMessage.jsx";
 import Header from "../components/headerPrincipal.jsx";
-// import SendMessageModal from "../components/sendMessageModal.jsx";
+import SendMessageModal from "../components/sendMessageModal.jsx";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const formatDate = (dateString) => {
@@ -26,7 +26,8 @@ function Principal() {
   const [sortOrder, setSortOrder] = useState("reciente");
   const [selectedSection, setSelectedSection] = useState("todos"); //Para el filtro por estado
   const [estadoModal, cambiarEstadoModal] = useState(false);
-  // const [estadoSendMessageModal, setEstadoSendMessageModal] = useState(false);
+  const [mostrarModal, setMostrarModal] = useState(false);
+  const [responseContent, setResponseContent] = useState("");
 
   useEffect(() => {
     getMessages();
@@ -34,6 +35,20 @@ function Principal() {
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
+  };
+
+  const handleResponseChange = (event) => {
+    setResponseContent(event.target.value);
+  };
+
+  const handleResponseSubmit = (event) => {
+    event.preventDefault();
+    // Aquí puedes realizar cualquier acción necesaria con la respuesta, como enviarla al backend
+    console.log("Respuesta enviada:", responseContent);
+    // Cerrar el modal después de enviar la respuesta
+    setMostrarModal(false);
+    // Limpiar el contenido de la respuesta
+    setResponseContent("");
   };
 
   const handleSortChange = (event) => {
@@ -175,6 +190,7 @@ function Principal() {
                 className="bg-cyan-50 rounded-lg shadow-md overflow-hidden relative m-3"
               >
                 <div className="flex-grow p-4">
+                  <input type="hidden" value={message.id} />
                   <h3 className="text-lg font-semibold mb-2">
                     {message.nombres}
                   </h3>
@@ -206,6 +222,7 @@ function Principal() {
                 </div>
                 {message.estado !== "terminado" ? (
                   <button
+                    onClick={() => setMostrarModal(message)}
                     className={`bg-${getStatusColor(
                       message.estado
                     )}-500 hover:bg-${getStatusColor(
@@ -226,16 +243,18 @@ function Principal() {
                     Ver
                   </button>
                 )}
-
+                  {/* Renderiza el formulario de respuesta dentro del modal */}
+                  <SendMessageModal
+                    handleResponseChange={handleResponseChange}
+                    handleResponseSubmit={handleResponseSubmit}
+                    responseContent={responseContent}
+                    estado={mostrarModal} cambiarEstado={setMostrarModal}
+                  />
                 {/* Renderizacion del modal para ver el mensaje completo */}
-                <Modal estado={estadoModal} cambiarEstado={cambiarEstadoModal}>
-                  {estadoModal && ( // Asegura que el estado no sea null antes de renderizar el contenido
-                    <>
-                    </>
-                  )}
-                </Modal>
-
-
+                <Modal
+                  estado={estadoModal}
+                  cambiarEstado={cambiarEstadoModal}
+                ></Modal>
               </div>
             ))
           )}

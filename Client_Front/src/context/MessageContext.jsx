@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { sendMessageRequest, getMessagesRequest } from "../api/message.js";
+import { sendMessageRequest, getMessagesRequest, respondMessageRequest } from "../api/message.js";
 
 const MessageContext = createContext();
 
@@ -31,23 +31,23 @@ export function MessageProvider({ children }) {
     console.log(res);
   };
 
-  const respondeMessage = async () => {
+  const respondMessage = async (messageId, responseContent, destinatario) => {
     try {
-      const res = await getMessagesRequest();
-      setMessages(res.data);
+      await respondMessageRequest(messageId, responseContent, destinatario);
+      // Actualizar los mensajes después de enviar la respuesta
+      await getMessages();
     } catch (error) {
       console.log(error);
     }
   };
-
 
   return (
     <MessageContext.Provider
       value={{
         messages,
         createMessage,
-        getMessages,
-        respondeMessage
+        getMessages,  
+        respondMessage
       }}
     >
       {children}
