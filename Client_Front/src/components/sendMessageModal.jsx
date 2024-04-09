@@ -5,13 +5,21 @@ import { respondMessageRequest } from "../api/message";
 
 const SendMessageModal = ({ estado, cambiarEstado }) => {
   const [responseContent, setResponseContent] = useState("");
+  const [error, setError] = useState("");
 
   const handleResponseChange = (event) => {
     setResponseContent(event.target.value);
+    setError(""); // Limpiar el mensaje de error cuando el usuario empiece a escribir
   };
 
   const handleResponseSubmit = async () => {
     try {
+      // Verificar si el contenido de la respuesta está vacío
+      if (!responseContent.trim()) {
+        setError("La respuesta no puede estar vacía"); // Establecer mensaje de error
+        return; // Si está vacío, no hacer nada
+      }
+      
       await respondMessageRequest(estado._id, responseContent, estado.correo);
       cambiarEstado(false);
     } catch (error) {
@@ -46,8 +54,14 @@ const SendMessageModal = ({ estado, cambiarEstado }) => {
                 value={responseContent}
                 onChange={handleResponseChange}
                 rows="4"
+                // Estilo para remarcar la textarea si hay un error
+                style={{ borderColor: error ? "red" : "" }}
               />
-              <BotonEnviar type="submit">Enviar</BotonEnviar>
+              {error && <MensajeError>{error}</MensajeError>}
+              {/* Deshabilitar el botón de enviar si el contenido del textarea está vacío */}
+              <BotonEnviar type="submit" disabled={!responseContent.trim()}>
+                Enviar
+              </BotonEnviar>
             </FormularioRespuesta>
           </ContenedorModal>
         </Overlay>
@@ -68,6 +82,11 @@ SendMessageModal.propTypes = {
 };
 
 export default SendMessageModal;
+const MensajeError = styled.p`
+  color: red;
+  margin-top: 5px;
+`;
+
 
 const Overlay = styled.div`
   width: 100vw;
@@ -82,7 +101,7 @@ const Overlay = styled.div`
 `;
 
 const BotonEnviar = styled.button`
-  background-color: #4caf50;
+  background-color: rgb(59 130 246);
   color: white;
   padding: 0.5rem 1rem;
   border: none;
@@ -91,7 +110,7 @@ const BotonEnviar = styled.button`
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: #45a049;
+    background-color: rgb(59 15 340);
   }
 `;
 
