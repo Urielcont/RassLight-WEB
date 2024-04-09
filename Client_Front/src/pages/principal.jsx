@@ -1,11 +1,8 @@
 import { useEffect, useState } from "react";
-import logo from "../assets/images/logo.png";
-import { Link } from "react-router-dom";
 import { useMessage } from "../context/MessageContext";
-import { useAuth } from "../context/authContext";
-import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
 import Modal from "../components/modalMessage.jsx";
+import Header from "../components/headerPrincipal.jsx";
+// import SendMessageModal from "../components/sendMessageModal.jsx";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const formatDate = (dateString) => {
@@ -22,37 +19,18 @@ export const formatDate = (dateString) => {
 };
 
 function Principal() {
-  const navigate = useNavigate();
   const { getMessages, messages } = useMessage();
-  const { logout } = useAuth();
+
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredMessages, setFilteredMessages] = useState([]);
   const [sortOrder, setSortOrder] = useState("reciente");
   const [selectedSection, setSelectedSection] = useState("todos"); //Para el filtro por estado
-  const [estadoModal, cambiarEstadoModal] = useState(null);
+  const [estadoModal, cambiarEstadoModal] = useState(false);
+  // const [estadoSendMessageModal, setEstadoSendMessageModal] = useState(false);
 
   useEffect(() => {
     getMessages();
   }, [getMessages]);
-
-  //Alerta para el logout
-  const handleLogout = () => {
-    Swal.fire({
-      title: "Seguro de salir?",
-      text: "Estás a punto de cerrar sesión",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Si",
-      cancelButtonText: "No",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        logout();
-        navigate("/");
-      }
-    });
-  };
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
@@ -113,18 +91,7 @@ function Principal() {
 
   return (
     <div>
-      <header className="bg-cyan-500 p-6 text-white flex items-center">
-        <img className="w-20 start-0" src={logo} alt="Logo" />
-        <h1 className="text-3xl font-bold text-center m-auto text-black ">
-          Sistema de Administración
-        </h1>
-        <Link
-          className="inline-block bg-red-800 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
-          onClick={handleLogout}
-        >
-          Salir
-        </Link>
-      </header>
+      <Header></Header>
 
       <div>
         <div className="flex justify-around mb-4">
@@ -264,26 +231,11 @@ function Principal() {
                 <Modal estado={estadoModal} cambiarEstado={cambiarEstadoModal}>
                   {estadoModal && ( // Asegura que el estado no sea null antes de renderizar el contenido
                     <>
-                      <h3 className="text-lg font-semibold mb-2">
-                        {estadoModal.nombres}
-                      </h3>
-                      <p className="text-sm text-gray-600 mb-1">
-                        <strong>Correo:</strong> {estadoModal.correo}
-                      </p>
-                      <p className="text-sm text-gray-600 mb-1">
-                        <strong>Mensaje:</strong> {estadoModal.mensaje}
-                      </p>
-                      <p className="text-sm text-gray-600 mb-1">
-                        <strong>Fecha:</strong> {formatDate(estadoModal.fecha)}
-                      </p>
-                      <div
-                        className={`bg-${getStatusColor(
-                          estadoModal.estado
-                        )}-500 absolute w-100 left-0 top-0 h-4 mb-3`}
-                      />
                     </>
                   )}
                 </Modal>
+
+
               </div>
             ))
           )}
@@ -292,6 +244,5 @@ function Principal() {
     </div>
   );
 }
-
 
 export default Principal;

@@ -31,12 +31,23 @@ export function MessageProvider({ children }) {
     console.log(res);
   };
 
+  const respondeMessage = async () => {
+    try {
+      const res = await getMessagesRequest();
+      setMessages(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+
   return (
     <MessageContext.Provider
       value={{
         messages,
         createMessage,
         getMessages,
+        respondeMessage
       }}
     >
       {children}

@@ -2,8 +2,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import { formatDate } from "../pages/principal.jsx"; 
 
-// eslint-disable-next-line react/prop-types, no-unused-vars
-const Modal = ({ children, estado, cambiarEstado }) => {
+const Modal = ({estado, cambiarEstado }) => {
   return (
     <>
       {estado && (
