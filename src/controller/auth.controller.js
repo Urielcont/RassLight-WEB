@@ -116,6 +116,38 @@ export const sendResponse = async (req, res) => {
   }
 };
 
+export const updateStatus = async (req, res) => {
+  try {
+    // Obtener los datos de la respuesta del cuerpo de la solicitud
+    const { messageId } = req.body;
+
+    const originalMessage = await Message.findById(messageId);
+
+    if (!originalMessage) {
+      return res.status(404).json({ message: "Mensaje no encontrado" });
+    }
+
+    // Actualizar el estado del mensaje original a "terminado" en la base de datos
+    const updatedMessage = await Message.findByIdAndUpdate(
+      messageId,
+      { estado: 'pendiente' },
+      { new: true }
+    );
+
+    await updatedMessage.save();
+
+    // Enviar correo electrónico utilizando la función enviarCorreoRespuesta
+    await enviarEmail(originalMessage.correo, 'Estamos respondiendo tu mensaje, gracias...');
+
+    // Responder con un mensaje de éxito
+    res.status(200).json({ message: "Respuesta enviada y mensaje original marcado como terminado" });
+
+  } catch (error) {
+    console.error('Error al responder al mensaje:', error);
+    res.status(500).json({ message: 'Error interno del servidor' });
+  }
+}
+
 export const getMessages = async (req, res) => {
   try {
     // Utiliza el método find para obtener todos los mensajes

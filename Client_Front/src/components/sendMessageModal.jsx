@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import PropTypes from "prop-types";
+import Swal from "sweetalert2";
 import { useState } from "react";
-import { respondMessageRequest } from "../api/message";
+import { respondMessageRequest, updateStatusRequest } from "../api/message";
 
 const SendMessageModal = ({ estado, cambiarEstado }) => {
   const [responseContent, setResponseContent] = useState("");
@@ -12,6 +13,28 @@ const SendMessageModal = ({ estado, cambiarEstado }) => {
     setError(""); // Limpiar el mensaje de error cuando el usuario empiece a escribir
   };
 
+  const handleChange = () => {
+    try {
+      Swal.fire({
+        title: "¿Deseas posponer la respuesta?",
+        text: "Se enviara un correo al usuario",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si",
+        cancelButtonText: "No",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          updateStatusRequest(estado._id, estado.correo);
+          cambiarEstado(false);
+        }
+      });
+    } catch (error) {
+      console.error("Error al enviar respuesta:", error);
+    }
+  };
+
   const handleResponseSubmit = async () => {
     try {
       // Verificar si el contenido de la respuesta está vacío
@@ -19,8 +42,20 @@ const SendMessageModal = ({ estado, cambiarEstado }) => {
         setError("La respuesta no puede estar vacía"); // Establecer mensaje de error
         return; // Si está vacío, no hacer nada
       }
-      
-      await respondMessageRequest(estado._id, responseContent, estado.correo);
+      Swal.fire({
+        title: "¿Estas seguro de enviar la respuesta?",
+        text: "Se enviara un mensaje al correo",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si",
+        cancelButtonText: "No",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          respondMessageRequest(estado._id, responseContent, estado.correo);
+        }
+      });
       cambiarEstado(false);
     } catch (error) {
       console.error("Error al enviar respuesta:", error);
@@ -34,7 +69,16 @@ const SendMessageModal = ({ estado, cambiarEstado }) => {
           <ContenedorModal>
             <EncabezadoModal>
               <NombrePersona>{estado.nombres}</NombrePersona>
-              <BotonCerrar onClick={() => cambiarEstado(false)}>Cerrar</BotonCerrar>
+              {estado.estado === "activo" ? (
+               <BotonPendiente onClick={handleChange}>
+               <LetraBoton>Pendiente</LetraBoton>
+             </BotonPendiente>
+              ) : (
+                <LetraBoton></LetraBoton>
+              )} 
+              <BotonCerrar onClick={() => cambiarEstado(false)}>
+                Cerrar
+              </BotonCerrar>
             </EncabezadoModal>
             <TablaDatos>
               <TablaFila>
@@ -76,6 +120,7 @@ SendMessageModal.propTypes = {
     correo: PropTypes.string.isRequired,
     mensaje: PropTypes.string.isRequired,
     fecha: PropTypes.string.isRequired,
+    estado: PropTypes.string.isRequired,
     _id: PropTypes.string.isRequired,
   }).isRequired,
   cambiarEstado: PropTypes.func.isRequired,
@@ -87,6 +132,24 @@ const MensajeError = styled.p`
   margin-top: 5px;
 `;
 
+const BotonPendiente = styled.div`
+  width: 6rem;
+  height: 2rem;
+  margin-left: 12rem;
+  border-radius: 10px;
+  background: rgb(255 88 100);
+  &:hover {
+    background-color: rgb(217 18 37);
+  }
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+`;
+
+const LetraBoton = styled.p`
+  text-align: center;
+  line-height: 2rem;
+  color: aliceblue;
+`;
 
 const Overlay = styled.div`
   width: 100vw;
@@ -177,4 +240,3 @@ const BotonCerrar = styled.button`
     background: rgb(59 15 340);
   }
 `;
-

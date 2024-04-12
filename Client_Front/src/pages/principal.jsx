@@ -190,6 +190,15 @@ function Principal() {
                 className="bg-cyan-50 rounded-lg shadow-md overflow-hidden relative m-3"
               >
                 <div className="flex-grow p-4">
+                  <div
+                    className={`bg-${getStatusColor(
+                      message.estado
+                    )}-500 absolute right-6 rounded-md top-2 w-auto h-8 p-2`}
+                  >
+                    <p className="text-sm text-white font-bold leading-4">
+                      {message.estado}
+                    </p>
+                  </div>
                   <input type="hidden" value={message.id} />
                   <h3 className="text-lg font-semibold mb-2">
                     {message.nombres}
@@ -243,13 +252,14 @@ function Principal() {
                     Ver
                   </button>
                 )}
-                  {/* Renderiza el formulario de respuesta dentro del modal */}
-                  <SendMessageModal
-                    handleResponseChange={handleResponseChange}
-                    handleResponseSubmit={handleResponseSubmit}
-                    responseContent={responseContent}
-                    estado={mostrarModal} cambiarEstado={setMostrarModal}
-                  />
+                {/* Renderiza el formulario de respuesta dentro del modal */}
+                <SendMessageModal
+                  handleResponseChange={handleResponseChange}
+                  handleResponseSubmit={handleResponseSubmit}
+                  responseContent={responseContent}
+                  estado={mostrarModal}
+                  cambiarEstado={setMostrarModal}
+                />
                 {/* Renderizacion del modal para ver el mensaje completo */}
                 <Modal
                   estado={estadoModal}
