@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
 import "../css/login.css";
 
 function Loginpage() {
-  const { signin, errors: signinErrors, isAuthenticated } = useAuth();
+  const { signin, errors: SigninErrors, isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
   const [formCompleted, setFormCompleted] = useState(false); // Estado para controlar si los campos están completos
@@ -21,19 +21,32 @@ function Loginpage() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => signin(data);
-
+  const onSubmit = async (data) => {
+    const success = await signin(data);
+    if (!success) {
+      // Si las credenciales son incorrectas, mostramos una alerta
+      Swal.fire({
+        icon: 'error',
+        title: 'Credenciales incorrectas',
+        text: 'Por favor, verifica tus credenciales e intenta nuevamente.',
+      });
+    }
+  };
+  
   useEffect(() => {
+    // Esta función se ejecutará cada vez que isAuthenticated cambie
     if (isAuthenticated) {
-      navigate("/principal");
+      // Si el usuario está autenticado, mostramos una alerta de inicio de sesión exitoso
       Swal.fire({
         icon: 'success',
         title: '¡Inicio de sesión exitoso!',
         text: 'Bienvenido de vuelta',
-        
       });
+      // También navegamos al componente principal
+      navigate("/principal");
     }
   }, [isAuthenticated, navigate]);
+  
 
   // Función para verificar si los campos están completos
   const checkFormCompletion = () => {
@@ -45,7 +58,7 @@ function Loginpage() {
   return (
     <div className="bg-gray-200 h-screen flex items-center justify-center">
       <div className="bg-white py-10 px-12 rounded-lg shadow-md flex flex-col items-center w-full max-w-sm">
-        {signinErrors.map((error, i) => (
+        {Array.isArray(SigninErrors) && SigninErrors.map((error, i) => (
           <div className="bg-red-500 p-2 text-white" key={i}>
             {error}
           </div>
