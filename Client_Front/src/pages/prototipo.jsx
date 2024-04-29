@@ -8,7 +8,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 // Importar las imagenes a autilizar
 import Sensor from '../assets/images/sensor.jpeg'
-import Sensor1 from '../assets/images/ph.png'
+import Sensor1 from '../assets/images/ph.jpg'
 import Sensor2 from '../assets/images/flujo.png'
 import Sensor3 from '../assets/images/turbi.jpg'
 
@@ -45,24 +45,24 @@ function Prototipo() {
                         </div>
                         <div className="carousel-inner">
                             <div className="carousel-item active">
-                                <img src={Sensor} className="d-block w-100 img-fluid" alt="..." /> 
+                                <img src={Sensor1} className="d-block w-100 h-96 img-fluid" alt="..." /> 
                                 <div className="carousel-caption d-none d-md-block">
-                                    <h5 className='text-black'>Primer Imagen</h5>
-                                    <p className='text-black'>Descripcion acerca de la imagen que se muestra.</p>
+                                    <h5 className='text-black'>Sensor de Ph</h5>
+                                    <p className='text-black'>Modelo: PH-450-2C.</p>
                                 </div>
                             </div>
                             <div className="carousel-item">
-                                <img src={Sensor} className="d-block w-100 img-fluid" alt="..." />
+                                <img src={Sensor2} className="d-block w-100 h-96 img-fluid" alt="..." />
                                 <div className="carousel-caption d-none d-md-block">
-                                    <h5 className='text-black'>Segunda Imagen</h5>
-                                    <p className='text-black'>SDescripcion acerca de la imagen que se muestra.</p>
+                                    <h5 className='text-black'>Sensor de flujo</h5>
+                                    <p className='text-black'>Modelo: YF-S201.</p>
                                 </div>
                             </div>
                             <div className="carousel-item">
-                                <img src={Sensor} className="d-block w-100 img-fluid" alt="..." />
+                                <img src={Sensor3} className="d-block w-100 h-96 img-fluid" alt="..." />
                                 <div className="carousel-caption d-none d-md-block">
-                                    <h5 className='text-black'>Tercera Imagen</h5>
-                                    <p className='text-black'>Descripcion acerca de la imagen que se muestra.</p>
+                                    <h5 className='text-black'>Sensor de turbidez</h5>
+                                    <p className='text-black'>Modelo: TS‑300B.</p>
                                 </div>
                             </div>
                         </div>
@@ -89,12 +89,12 @@ function Prototipo() {
                     </div>
                     <div className="bg-slate-700 card">
                         <h1 className='text-white font-semibold text-lg mb-2'>Sensor del flujo del agua</h1>
-                        <p className='text-white'>La turbidez del agua se refiere a la claridad o transparencia del líquido. Nuestro dispositivo detecta cualquier partícula en suspensión que pueda afectar la calidad del agua, garantizando que sea cristalina y segura para beber.</p>
+                        <p className='text-white'>El flujo de agua es crucial para asegurar un suministro constante y eficiente. Nuestro prototipo monitorea el flujo para detectar cualquier irregularidad y asegurar un suministro estable en todo momento.</p>
                         <img src={Sensor2} alt="No se encontró la imagen" />
                     </div>
                     <div className="bg-slate-700 card">
                         <h1 className='text-white font-semibold text-lg mb-2'>Sensor de Turbidez</h1>
-                        <p className='text-white'>El flujo de agua es crucial para asegurar un suministro constante y eficiente. Nuestro prototipo monitorea el flujo para detectar cualquier irregularidad y asegurar un suministro estable en todo momento.</p>
+                        <p className='text-white'>La turbidez del agua se refiere a la claridad o transparencia del líquido. Nuestro dispositivo detecta cualquier partícula en suspensión que pueda afectar la calidad del agua, garantizando que sea cristalina y segura para beber.</p>
                         <img src={Sensor3} alt="No se encontró la imagen" />
                     </div>
                 </div>
@@ -107,11 +107,11 @@ function Prototipo() {
                 </div>
                 <div className=''>
                     <h1 className='font-bold text-xl'>PH</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis nostrum dolores doloremque, sunt at tenetur. Aspernatur nesciunt assumenda, saepe, facilis repudiandae perspiciatis veniam commodi, quos modi sit deserunt a voluptas?</p>
+                    <p>Este sensor tiene un rango de entre 1 a 14 niveles de Ph donde se distingue entre acidez y base en el agua, esta medición permite conocer el nivel de ph en el agua y cuando sobresalte de entre los niveles recomendados para la ingesta humana.</p>
                 </div>
                 <div className=''>
                     <h1 className='font-bold text-xl'>Flujo</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis nostrum dolores doloremque, sunt at tenetur. Aspernatur nesciunt assumenda, saepe, facilis repudiandae perspiciatis veniam commodi, quos modi sit deserunt a voluptas?</p>
+                    <p>El flujo de agua es crucial para asegurar un suministro constante y eficiente. Nuestro prototipo monitorea el flujo para detectar cualquier irregularidad y asegurar un suministro estable en todo momento.</p>
                 </div>
                 <div className="content-center items-center">
                     <img src={Sensor2} alt="Image 2" className="h-auto max-w-80" />
@@ -121,33 +121,13 @@ function Prototipo() {
                 </div>
                 <div className=''>
                     <h1 className='font-bold text-xl'>Turbidez</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis nostrum dolores doloremque, sunt at tenetur. Aspernatur nesciunt assumenda, saepe, facilis repudiandae perspiciatis veniam commodi, quos modi sit deserunt a voluptas?</p>
+                    <p>La turbidez del agua se refiere a la claridad o transparencia del líquido. Nuestro dispositivo detecta cualquier partícula en suspensión que pueda afectar la calidad del agua, garantizando que sea cristalina y segura para beber.</p>
                 </div>
 
             </div>
             {/* Parte de especificaciones*/}
             <div className='grid place-items-center grid-cols-2  bg-gray-500 h-auto'>
-                {/* GIRD ESPECIFICACIONES */}
-                <div>
-                    <h1 className='text-white font-bold'>ESPECIFICACIONES</h1>
-                </div>
-                {/* GRID PARA LA LISTA DE COMPONENTES */}
-                <div className='mt-6'>
-                    <ul className='text-white proto-list' >
-                        <li>1</li>
-                        <li>2</li>
-                        <li>3</li>
-                        <li>4</li>
-                    </ul>
-                </div>
-                {/* GRID Texto documentacion */}
-                <div className='m-10'>
-                    <h1 className='text-white font-bold '>DOCUMENTACION</h1>
-                </div>
-                {/* GRID PARA LINK DE LA DOCUMENTACION */}
-                <div className='m-10'>
-                    <a href="" className='text-blue-200'>Documentacion Oficial</a>
-                </div>
+
             </div>
             <Footer></Footer>
         </div>

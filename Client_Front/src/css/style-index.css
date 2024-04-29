@@ -42,6 +42,7 @@ a {
   position: absolute;
   width: 15%;
   text-align: center;
+  margin-top: 5%;
   top: 75%;
   left: 50%;
   transform: translateX(-50%);
@@ -165,6 +166,7 @@ header {
   font-size: 1vmax;
   cursor: pointer;
   text-decoration: none;
+  margin-top: 15%;
 }
 
 .img-incio-proto {

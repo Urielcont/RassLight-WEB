@@ -45,13 +45,9 @@ function Index() {
         <div className="text-content ">
           <h2 className='text-center pb-2'>Sobre Nosotros</h2>
           <p className='text-xs'>En esta página, nos gustaría compartir un poco más sobre quiénes somos, nuestra pasión por la innovación y cómo nos esforzamos por ofrecer soluciones de vanguardia en el mundo de la tecnología IoT.</p>
-          <ul>
-            <li className='block'>Opcion 1</li>
-            <li className='block'>Opcion 2</li>
-            <li className='block'>Opcion 3</li>
-            {/* Boton para enviar a pagina nosotros */}
-            <li><a className="button-image2" href="">Ver Más</a></li>
-          </ul>
+          
+          <a className="button-image2" href="/SobreNosotros">Ver Más</a>
+
 
         </div>
 
@@ -68,25 +64,25 @@ function Index() {
             <img className='w-96 h-auto mb-24' src={Nube} alt="No se encontro la imagen" />
           </div>
           <div className=''>
-            <h1 className='font-semibold text-center text-2xl max-sm:text-base'>Caracteristca 1</h1>
-            <p className='italic text-sm text-neutral-300 max-sm:text-sm p-2'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem dolor alias beatae dignissimos tempora earum eos esse numquam nisi. Totam eum tempore dolor laudantium, eius vitae molestias ex ipsa nisi.</p>
+            <h1 className='font-semibold text-center text-2xl max-sm:text-base'>Conectividad a internet</h1>
+            <p className='italic text-sm text-neutral-300 max-sm:text-sm p-2'>EL prototipo realizado tiene la capacidad de conectarse a internet y enviar datos directamente a dispositivos moviles.</p>
           </div>
           <div>
-            <h1 className='font-semibold text-center text-2xl max-sm:text-base'>Caracteristca 2</h1>
-            <p className='italic text-sm text-neutral-300 max-sm:text-sm p-2'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem dolor alias beatae dignissimos tempora earum eos esse numquam nisi. Totam eum tempore dolor laudantium, eius vitae molestias ex ipsa nisi.</p>
+            <h1 className='font-semibold text-center text-2xl max-sm:text-base'>Asequibilidad</h1>
+            <p className='italic text-sm text-neutral-300 max-sm:text-sm p-2'>Los materiales utilizados por Rasslight están pensados de forma que se obtenga relación calidad-precio de forma que se pueda acceder a prototipos de alto nivel con una inversión realista para empresas y microempresas.</p>
           </div>
           <div>
-            <h1 className='font-semibold text-center text-2xl max-sm:text-base'>Caracteristca 3</h1>
-            <p className='italic text-sm text-neutral-300 max-sm:text-sm p-2'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem dolor alias beatae dignissimos tempora earum eos esse numquam nisi. Totam eum tempore dolor laudantium, eius vitae molestias ex ipsa nisi.</p>
+            <h1 className='font-semibold text-center text-2xl max-sm:text-base'>Innovación</h1>
+            <p className='italic text-sm text-neutral-300 max-sm:text-sm p-2'>Dentro de los negocios en el ambito de la distribución de agua purificada no se encuentra con facilidad una medición automatica confiable, por lo que se está innovando en la forma de realizar sus procesos y acortar los tiempos y esfuerzos realizados por los trabajadores.</p>
           </div>
           <div>
-            <h1 className='font-semibold text-center text-2xl max-sm:text-base'>Caracteristca 4</h1>
-            <p className='italic text-sm text-neutral-300 max-sm:text-sm p-2'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem dolor alias beatae dignissimos tempora earum eos esse numquam nisi. Totam eum tempore dolor laudantium, eius vitae molestias ex ipsa nisi.</p>
+            <h1 className='font-semibold text-center text-2xl max-sm:text-base'>Multifuncionalidad</h1>
+            <p className='italic text-sm text-neutral-300 max-sm:text-sm p-2'>El prototipo cuenta con la revisión de distitos factores de calidad del agua dentro del mismo dispositivo. Se realizan la funciones suficientes para dar control de calidad al producto del cliente sin necesidad de apostar por un mecanismo distinto para cada proceso-</p>
           </div>
           <div className='col-span-2 m-4 bg-slate-400'>
-            <a className="button-image2 mb-12 font-bold" href="">Ver Más</a>
+            <a className="button-image2 mb-12 font-bold" href="/prototipo">Conocer Más</a>
           </div>
-        </div>
+        </div>  
       </div>
 
 

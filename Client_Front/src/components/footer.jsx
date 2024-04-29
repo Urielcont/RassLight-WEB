@@ -70,7 +70,8 @@ function Footer(){
           {/* Parte Centrada del footer */}
           <div className="text-center">
             <div className="mb-2"><h2 className="text-center mt-3">Datos de la empresa</h2></div>
-            <div className="mt-4 "><p className="p-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam aperiam ut modi ipsa provident ducimus obcaecati id facilis recusandae dolor! Odio optio architecto ad praesentium sint impedit dicta totam at?</p></div>
+            <div className="mt-4 "><p className="p-1">En RassLight somos una empresa comprometida con la innovación y automatización de 
+procesos complejos dentro de productos existentes con potencial sin explotar y reinventar la forma para la que se puede aprovechar al máximo las nuevas tecnologías de forma que se adapte funcionalmente a las necesidades de los usuarios</p></div>
             
           </div>
 
